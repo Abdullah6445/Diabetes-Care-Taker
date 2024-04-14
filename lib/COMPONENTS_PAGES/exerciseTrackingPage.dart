@@ -6,6 +6,9 @@ class exerciseTrackingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Exercise Tracking Page"),
+      ),
       body: Container(
         child: Center(child: Text("exercise Tracking Page")),
       ),

@@ -6,6 +6,9 @@ class educationLibraryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Education Library Page"),
+      ),
       body: Container(
         child: Center(child: Text("education Library Page")),
       ),

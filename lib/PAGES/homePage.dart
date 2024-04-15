@@ -3,6 +3,7 @@ import 'package:diabetes_care_taker/COMPONENTS_PAGES/healthInsightsPage.dart';
 import 'package:diabetes_care_taker/COMPONENTS_PAGES/insulinDosePage.dart';
 import 'package:diabetes_care_taker/COMPONENTS_PAGES/medicationReminderPage.dart';
 import 'package:diabetes_care_taker/PAGES/drawerPage.dart';
+import 'package:diabetes_care_taker/PAGES/popupMenuPage.dart';
 import 'package:flutter/material.dart';
 
 class homePage extends StatelessWidget {
@@ -16,48 +17,7 @@ class homePage extends StatelessWidget {
         drawer: drawerPage(),
         appBar: AppBar(
           actions: [
-            PopupMenuButton(
-              itemBuilder: (context) => [
-                PopupMenuItem(
-                    child: ListTile(
-                  onTap: () {},
-                  horizontalTitleGap: 0,
-                  leading:
-                      Icon(Icons.info_outline_rounded, color: Colors.black),
-                  title: Text("ABOUT App"),
-                )),
-                PopupMenuItem(
-                    child: ListTile(
-                  onTap: () {},
-                  horizontalTitleGap: 0,
-                  leading: Icon(Icons.contact_emergency_outlined,
-                      color: Colors.black),
-                  title: Text("Contact Us"),
-                )),
-                PopupMenuItem(
-                    child: ListTile(
-                  onTap: () {},
-                  horizontalTitleGap: 0,
-                  leading:
-                      Icon(Icons.help_center_outlined, color: Colors.black),
-                  title: Text("Help"),
-                )),
-                PopupMenuItem(
-                    child: ListTile(
-                  onTap: () {},
-                  horizontalTitleGap: 0,
-                  leading: Icon(Icons.group, color: Colors.black),
-                  title: Text("Developers"),
-                )),
-                PopupMenuItem(
-                    child: ListTile(
-                  onTap: () {},
-                  horizontalTitleGap: 0,
-                  leading: Icon(Icons.menu_book_sharp, color: Colors.black),
-                  title: Text("Terms and Privacy Policy"),
-                )),
-              ],
-            )
+            popupMenuPage(),
           ],
           elevation: 10,
           // centerTitle: true,
@@ -66,8 +26,8 @@ class homePage extends StatelessWidget {
             style: TextStyle(fontWeight: FontWeight.w900),
           ),
           bottom: TabBar(
-            isScrollable: true,
-            tabAlignment: TabAlignment.start,
+            // isScrollable: true,
+            // tabAlignment: TabAlignment.start,
             indicatorColor: Colors.redAccent,
             tabs: [
               Tab(
@@ -76,7 +36,7 @@ class homePage extends StatelessWidget {
                   Icons.water_drop_sharp,
                   color: Colors.redAccent,
                 ),
-                child: Text("Blood Glucose Monitoring"),
+                child: Text("Blood"),
               ),
               Tab(
                 icon: Icon(
@@ -84,7 +44,7 @@ class homePage extends StatelessWidget {
                   Icons.health_and_safety,
                   color: Colors.blue,
                 ),
-                child: Text("Health Insights & Trends"),
+                child: Text("Insights"),
               ),
               Tab(
                 icon: Icon(
@@ -92,7 +52,7 @@ class homePage extends StatelessWidget {
                   Icons.calculate,
                   color: Colors.greenAccent,
                 ),
-                child: Text("Insulin Dose Calculation"),
+                child: Text("Insulin"),
               ),
               Tab(
                 icon: Icon(
@@ -100,7 +60,7 @@ class homePage extends StatelessWidget {
                   Icons.alarm_add,
                   color: Colors.orangeAccent,
                 ),
-                child: Text("Medication Reminder"),
+                child: Text("Medication"),
               ),
             ],
           ),

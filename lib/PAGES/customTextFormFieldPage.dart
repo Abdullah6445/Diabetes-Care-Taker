@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class customTextFormField extends StatelessWidget {
   final String? hintTextt;
@@ -18,7 +19,7 @@ class customTextFormField extends StatelessWidget {
     this.suffixIconn,
     this.iconColors = const Color.fromARGB(255, 5, 65, 114),
     this.controllerr,
-    this.keyboardType = TextInputType.text,
+    this.keyboardType,
     this.obscurityy = false,
   });
 
@@ -37,6 +38,7 @@ class customTextFormField extends StatelessWidget {
             border: OutlineInputBorder(),
             hintText: hintTextt,
             labelText: labelTextt),
+        keyboardType: keyboardType,
       ),
     );
   }

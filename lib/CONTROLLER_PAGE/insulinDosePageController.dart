@@ -1,8 +1,84 @@
-import 'dart:ffi';
+import 'package:diabetes_care_taker/PAGES/customToastPage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
-class insulinDosePageController extends ChangeNotifier {
+class insulinDosePageController with ChangeNotifier {
   String _selectedinsulintype = '';
+
+  TextEditingController bolusInsulin = TextEditingController();
+
+  TextEditingController basalInsulin = TextEditingController();
+
+  double isf = 0;
+  double icr = 0;
+
+  String get selectedinsulintype => _selectedinsulintype;
+
+  void setselectedinsulintype(String type) {
+    _selectedinsulintype = type;
+    if (_selectedinsulintype == 'SELECT Insulin Type') {
+      CustomToast(message: "Select Insulin Type");
+    }
+    notifyListeners();
+  }
+
+  void calculateisf() {
+    if (_selectedinsulintype == 'Regular Insulin') {
+      isf = (1500 /
+              (double.parse(bolusInsulin.text) +
+                  double.parse(basalInsulin.text)))
+          .roundToDouble();
+    } else if (_selectedinsulintype == 'Rapid Acting Insulin') {
+      isf = (1800 /
+              (double.parse(bolusInsulin.text) +
+                  double.parse(basalInsulin.text)))
+          .roundToDouble();
+    } else {
+      CustomToast(message: "Select Insulin Type");
+    }
+    notifyListeners();
+  }
+
+  void calculateicr() {
+    icr = (500 /
+            (double.parse(bolusInsulin.text) + double.parse(basalInsulin.text)))
+        .roundToDouble();
+    notifyListeners();
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+
+class insulinDosePageController with ChangeNotifier {
+  String _selectedinsulintype = '';
+
   double _bolusinsulin = 0;
   double _basalinsulin = 0;
   double _isf = 0;
@@ -16,13 +92,35 @@ class insulinDosePageController extends ChangeNotifier {
 
   void setselectedinsulintype(String type) {
     _selectedinsulintype = type;
-    print('Selected Insulin Type: $_selectedinsulintype');
+    // print('Selected Insulin Type: $_selectedinsulintype');
     notifyListeners();
   }
 
   void setinsulin(double bolus, double basal) {
-    _bolusinsulin = bolus;
-    _basalinsulin = basal;
+    bolusInsulin = bolus;
+    basalInsulin = basal;
+    notifyListeners();
+  }
+
+  void calculateisf() {
+    if (_selectedinsulintype == 'Regular Insulin') {
+      isf = (1500 /
+              (double.parse(bolusInsulin.text) +
+                  double.parse(basalInsulin.text)))
+          .roundToDouble();
+    } else if (_selectedinsulintype == 'Rapid Acting Insulin') {
+      isf = (1800 /
+              (double.parse(bolusInsulin.text) +
+                  double.parse(basalInsulin.text)))
+          .roundToDouble();
+    }
+    notifyListeners();
+  }
+
+  void calculateicr() {
+    icr = (500 /
+            (double.parse(bolusInsulin.text) + double.parse(basalInsulin.text)))
+        .roundToDouble();
     notifyListeners();
   }
 
@@ -40,3 +138,6 @@ class insulinDosePageController extends ChangeNotifier {
     notifyListeners();
   }
 }
+
+
+*/

@@ -36,7 +36,10 @@ class homePage extends StatelessWidget {
                   Icons.water_drop_sharp,
                   color: Colors.redAccent,
                 ),
-                child: Text("Blood"),
+                child: Text(
+                  "Blood Glocuse Monitoring",
+                  overflow: TextOverflow.ellipsis,
+                ),
               ),
               Tab(
                 icon: Icon(
@@ -44,7 +47,10 @@ class homePage extends StatelessWidget {
                   Icons.health_and_safety,
                   color: Colors.blue,
                 ),
-                child: Text("Insights"),
+                child: Text(
+                  "Insights & Trends",
+                  overflow: TextOverflow.ellipsis,
+                ),
               ),
               Tab(
                 icon: Icon(
@@ -52,7 +58,10 @@ class homePage extends StatelessWidget {
                   Icons.calculate,
                   color: Colors.greenAccent,
                 ),
-                child: Text("Insulin"),
+                child: Text(
+                  "Insulin Dose Calculation",
+                  overflow: TextOverflow.ellipsis,
+                ),
               ),
               Tab(
                 icon: Icon(
@@ -60,7 +69,10 @@ class homePage extends StatelessWidget {
                   Icons.alarm_add,
                   color: Colors.orangeAccent,
                 ),
-                child: Text("Medication"),
+                child: Text(
+                  "Medication",
+                  overflow: TextOverflow.ellipsis,
+                ),
               ),
             ],
           ),

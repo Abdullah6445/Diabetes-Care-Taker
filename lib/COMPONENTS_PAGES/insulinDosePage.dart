@@ -1,3 +1,4 @@
+import 'package:diabetes_care_taker/COMPONENTS_PAGES/exerciseTrackingPage.dart';
 import 'package:diabetes_care_taker/COMPONENTS_PAGES/mealDoseCalulationPage.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -25,10 +26,13 @@ class insulinDosePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              'Insulin Dose Calculation',
-              style: TextStyle(
-                fontSize: 22,
+            Padding(
+              padding: const EdgeInsets.only(top: 25),
+              child: Text(
+                'Insulin Dose Calculation',
+                style: TextStyle(
+                  fontSize: 22,
+                ),
               ),
             ),
             SizedBox(
@@ -123,7 +127,7 @@ class insulinDosePage extends StatelessWidget {
                         builder: (context) => mealDoseCalculationPage(),
                       ));
                 },
-                child: Text('Meal & Correction Dose Calcultion')),
+                child: Text('Meal & Correction Dose Calculation')),
           ],
         ),
       ),

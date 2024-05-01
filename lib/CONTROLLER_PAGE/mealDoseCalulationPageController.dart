@@ -1,48 +1,44 @@
-// // import 'package:js/js.dart';
-// import 'dart:js';
+import 'dart:ffi';
 
-// import 'package:flutter/material.dart';
-// import 'package:diabetes_care_taker/CONTROLLER_PAGE/insulinDosePageController.dart';
-// import 'package:provider/provider.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+class mealDoseCalculationPageController with ChangeNotifier {
+  TextEditingController currentbloodsugarcontroller = TextEditingController();
+  TextEditingController targetbloodsugarcontroller = TextEditingController();
+  TextEditingController noofcarbscontroller = TextEditingController();
 
-// class mealDoseCalculationPageController extends ChangeNotifier {
-//   double _currentbloodsugar = 0;
-//   double _targetbloodsugar = 0;
-//   double _noofcarbs = 0;
-//   double _mealdose = 0;
-//   double _correctiondose = 0;
-//   double _mealcorrectiondose = 0;
+  double isf = 0;
+  double icr = 0;
+  double mealdose = 0;
+  double correctiondose = 0;
+  double mealcorrectiondose = 0;
 
-//   double get currentbloodsugar => _currentbloodsugar;
-//   double get targetbloodsugar => _targetbloodsugar;
-//   double get noofcarbs => _noofcarbs;
-//   double get mealdose => _mealdose;
-//   double get correctiondose => _correctiondose;
-//   double get mealcorrectiondose => _mealcorrectiondose;
+  void mealdosecalculation() {
+    mealdose = ((double.parse(noofcarbscontroller.text)) / icr);
+    notifyListeners();
+  }
 
-//   final insulindosepagecontroller = Provider.of<insulinDosePageController>(
-//       context as BuildContext,
-//       listen: false);
+  void correctiondosecalculation() {
+    correctiondose = (((double.parse(currentbloodsugarcontroller.text)) -
+            (double.parse(targetbloodsugarcontroller.text))) /
+        isf);
+    notifyListeners();
+  }
 
-//   void setdosevalues(
-//       double currentbloodsugar, double targerbloodsugar, double noofcarbs) {
-//     _currentbloodsugar = currentbloodsugar;
-//     _targetbloodsugar = targerbloodsugar;
-//     _noofcarbs = noofcarbs;
-//   }
+  void mealcorrectiondosecalculation() {
+    mealcorrectiondose = (mealdose + correctiondose);
+    notifyListeners();
+  }
 
-//   void mealdosecalculation() {
-//     _mealdose = (noofcarbs / insulindosepagecontroller.icr).roundToDouble();
-//   }
-
-//   void correctiondosecalculation() {
-//     _correctiondose =
-//         ((currentbloodsugar - targetbloodsugar) / insulindosepagecontroller.isf)
-//             .roundToDouble();
-//   }
-
-//   void mealcorrectiondosecalculation() {
-//     _mealcorrectiondose = (mealdose + correctiondose).roundToDouble();
-//   }
-// }
+  void emptyfields() {
+    if (currentbloodsugarcontroller.text.isEmpty ||
+        targetbloodsugarcontroller.text.isEmpty ||
+        noofcarbscontroller.text.isEmpty) {
+      mealdose = 0;
+      correctiondose = 0;
+      mealcorrectiondose = 0;
+      notifyListeners();
+    }
+  }
+}

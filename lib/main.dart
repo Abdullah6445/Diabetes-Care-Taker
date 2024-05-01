@@ -1,4 +1,5 @@
 import 'package:diabetes_care_taker/CONTROLLER_PAGE/insulinDosePageController.dart';
+import 'package:diabetes_care_taker/CONTROLLER_PAGE/mealDoseCalulationPageController.dart';
 // import 'package:diabetes_care_taker/CONTROLLER_PAGE/mealDoseCalulationPageController.dart';
 import 'package:diabetes_care_taker/PAGES/homePage.dart';
 import 'package:flutter/material.dart';
@@ -18,9 +19,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (context) => insulinDosePageController(),
         ),
-        // ChangeNotifierProvider(
-        //   create: (context) => mealDoseCalculationPageController(),
-        // ),
+        ChangeNotifierProvider(
+          create: (context) => mealDoseCalculationPageController(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

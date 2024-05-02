@@ -1,7 +1,4 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class mealDoseCalculationPageController with ChangeNotifier {
   TextEditingController currentbloodsugarcontroller = TextEditingController();
@@ -14,30 +11,40 @@ class mealDoseCalculationPageController with ChangeNotifier {
   double correctiondose = 0;
   double mealcorrectiondose = 0;
 
+  GlobalKey<FormState> form_key = GlobalKey<FormState>();
+
   void mealdosecalculation() {
-    mealdose = ((double.parse(noofcarbscontroller.text)) / icr);
-    notifyListeners();
+    if (form_key.currentState!.validate()) {
+      debugPrint("OK");
+      mealdose = ((double.parse(noofcarbscontroller.text)) / icr);
+
+      notifyListeners();
+    } else {
+      debugPrint("NOT OK");
+      notifyListeners();
+    }
   }
 
   void correctiondosecalculation() {
-    correctiondose = (((double.parse(currentbloodsugarcontroller.text)) -
-            (double.parse(targetbloodsugarcontroller.text))) /
-        isf);
-    notifyListeners();
+    if (form_key.currentState!.validate()) {
+      debugPrint("OK");
+      correctiondose = (((double.parse(currentbloodsugarcontroller.text)) -
+              (double.parse(targetbloodsugarcontroller.text))) /
+          isf);
+      notifyListeners();
+    } else {
+      debugPrint("NOT OK");
+      notifyListeners();
+    }
   }
 
   void mealcorrectiondosecalculation() {
-    mealcorrectiondose = (mealdose + correctiondose);
-    notifyListeners();
-  }
-
-  void emptyfields() {
-    if (currentbloodsugarcontroller.text.isEmpty ||
-        targetbloodsugarcontroller.text.isEmpty ||
-        noofcarbscontroller.text.isEmpty) {
-      mealdose = 0;
-      correctiondose = 0;
-      mealcorrectiondose = 0;
+    if (form_key.currentState!.validate()) {
+      debugPrint("OK");
+      mealcorrectiondose = (mealdose + correctiondose);
+      notifyListeners();
+    } else {
+      debugPrint("NOT OK");
       notifyListeners();
     }
   }

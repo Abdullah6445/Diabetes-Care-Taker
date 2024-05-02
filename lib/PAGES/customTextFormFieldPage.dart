@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:form_field_validator/form_field_validator.dart';
 
 class customTextFormField extends StatelessWidget {
   final String? hintTextt;
@@ -10,6 +11,7 @@ class customTextFormField extends StatelessWidget {
   final TextEditingController? controllerr;
   final TextInputType? keyboardType;
   final bool? obscurityy;
+  final MultiValidator validatorrr;
 
   const customTextFormField({
     super.key,
@@ -21,6 +23,8 @@ class customTextFormField extends StatelessWidget {
     this.controllerr,
     this.keyboardType,
     this.obscurityy = false,
+    required this.validatorrr,
+    // required this.validatorrr,
   });
 
   @override
@@ -30,6 +34,7 @@ class customTextFormField extends StatelessWidget {
       child: TextFormField(
         controller: controllerr,
         obscureText: obscurityy!,
+        validator: validatorrr,
         decoration: InputDecoration(
             prefixIcon: prefixIconn,
             prefixIconColor: iconColors,

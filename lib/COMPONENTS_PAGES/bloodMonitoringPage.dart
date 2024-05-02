@@ -14,21 +14,6 @@ class bloodMonitoringPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text("Blood glucose monitoring"),
-              customTextFormField(
-                labelTextt: "Enter Your Name",
-                hintTextt: "enter here...",
-                prefixIconn: Icon(Icons.person),
-              ),
-              customTextFormField(
-                labelTextt: "Enter Password",
-                hintTextt: "enter here...",
-                prefixIconn: Icon(Icons.security),
-              ),
-              ElevatedButton(
-                  onPressed: () {
-                    CustomToast(message: "Education library");
-                  },
-                  child: Text("submit"))
             ],
           ),
         ),

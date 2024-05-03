@@ -44,7 +44,7 @@ class insulinDosePage extends StatelessWidget {
                   return DropdownButton<String>(
                     iconEnabledColor: Colors.black,
                     style: TextStyle(
-                      color: Colors.black,
+                      color: Colors.red,
                       fontSize: 17,
                       fontWeight: FontWeight.bold,
                     ),
@@ -65,7 +65,7 @@ class insulinDosePage extends StatelessWidget {
               ),
               customTextFormField(
                 validatorrr: MultiValidator([
-                  RequiredValidator(errorText: "required"),
+                  RequiredValidator(errorText: "Required"),
                 ]),
                 controllerr: insulindosepagecontroller.bolusInsulin,
                 labelTextt: "Enter Your Total Bolus Insulin Dose",
@@ -75,7 +75,7 @@ class insulinDosePage extends StatelessWidget {
               ),
               customTextFormField(
                 validatorrr: MultiValidator([
-                  RequiredValidator(errorText: "required"),
+                  RequiredValidator(errorText: "Required"),
                 ]),
                 controllerr: insulindosepagecontroller.basalInsulin,
                 labelTextt: "Enter Your Total Basal Insulin Dose",

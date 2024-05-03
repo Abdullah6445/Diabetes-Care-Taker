@@ -15,36 +15,36 @@ class mealDoseCalculationPageController with ChangeNotifier {
 
   void mealdosecalculation() {
     if (form_key.currentState!.validate()) {
-      debugPrint("OK");
+      debugPrint("Validated");
       mealdose = ((double.parse(noofcarbscontroller.text)) / icr);
 
       notifyListeners();
     } else {
-      debugPrint("NOT OK");
+      debugPrint("Not Validated");
       notifyListeners();
     }
   }
 
   void correctiondosecalculation() {
     if (form_key.currentState!.validate()) {
-      debugPrint("OK");
+      debugPrint("Validated");
       correctiondose = (((double.parse(currentbloodsugarcontroller.text)) -
               (double.parse(targetbloodsugarcontroller.text))) /
           isf);
       notifyListeners();
     } else {
-      debugPrint("NOT OK");
+      debugPrint("Not Validated");
       notifyListeners();
     }
   }
 
   void mealcorrectiondosecalculation() {
     if (form_key.currentState!.validate()) {
-      debugPrint("OK");
+      debugPrint("Validated");
       mealcorrectiondose = (mealdose + correctiondose);
       notifyListeners();
     } else {
-      debugPrint("NOT OK");
+      debugPrint("Not Validated");
       notifyListeners();
     }
   }

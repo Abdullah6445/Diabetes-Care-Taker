@@ -20,7 +20,7 @@ class insulinDosePageController with ChangeNotifier {
 
   void calculateisf() {
     if (form_key.currentState!.validate()) {
-      debugPrint("OK");
+      debugPrint("Validated");
       if (_selectedinsulintype == 'Regular Insulin') {
         isf = (1500 /
             (double.parse(bolusInsulin.text) +
@@ -34,19 +34,19 @@ class insulinDosePageController with ChangeNotifier {
       }
       notifyListeners();
     } else {
-      debugPrint("NOT OK");
+      debugPrint("Not Validated");
       notifyListeners();
     }
   }
 
   void calculateicr() {
     if (form_key.currentState!.validate()) {
-      debugPrint("OK");
+      debugPrint("Validated");
       icr = (500 /
           (double.parse(bolusInsulin.text) + double.parse(basalInsulin.text)));
       notifyListeners();
     } else {
-      debugPrint("NOT OK");
+      debugPrint("Not Validated");
       notifyListeners();
     }
   }

@@ -47,7 +47,7 @@ class mealDoseCalculationPage extends StatelessWidget {
               ),
               customTextFormField(
                 validatorrr: MultiValidator([
-                  RequiredValidator(errorText: "required"),
+                  RequiredValidator(errorText: "Required"),
                 ]),
                 controllerr: mealdosecalculationpagecontroller
                     .currentbloodsugarcontroller,
@@ -58,7 +58,7 @@ class mealDoseCalculationPage extends StatelessWidget {
               ),
               customTextFormField(
                 validatorrr: MultiValidator([
-                  RequiredValidator(errorText: "required"),
+                  RequiredValidator(errorText: "Required"),
                 ]),
                 controllerr: mealdosecalculationpagecontroller
                     .targetbloodsugarcontroller,
@@ -69,7 +69,7 @@ class mealDoseCalculationPage extends StatelessWidget {
               ),
               customTextFormField(
                 validatorrr: MultiValidator([
-                  RequiredValidator(errorText: "required"),
+                  RequiredValidator(errorText: "Required"),
                 ]),
                 controllerr:
                     mealdosecalculationpagecontroller.noofcarbscontroller,

@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:diabetes_care_taker/COMPONENTS_PAGES/mealDoseCalulationPage.dart';
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';

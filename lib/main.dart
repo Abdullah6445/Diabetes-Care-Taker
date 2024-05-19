@@ -33,8 +33,9 @@ class MyApp extends StatelessWidget {
             bodySmall: TextStyle(
                 fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black),
           ),
-          colorScheme:
-              ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 5, 65, 114)),
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: Color.fromARGB(255, 5, 65, 114),
+          ),
           useMaterial3: false,
         ),
         home: homePage(),

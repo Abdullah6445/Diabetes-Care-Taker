@@ -1,4 +1,4 @@
-import 'package:diabetes_care_taker/COMPONENTS_PAGES/educationLibraryPage.dart';
+import 'package:diabetes_care_taker/COMPONENTS_PAGES/model/educationLibraryPage.dart';
 import 'package:diabetes_care_taker/COMPONENTS_PAGES/emergencyAlertPage.dart';
 import 'package:diabetes_care_taker/COMPONENTS_PAGES/exerciseTrackingPage.dart';
 import 'package:diabetes_care_taker/COMPONENTS_PAGES/testReminderPage.dart';

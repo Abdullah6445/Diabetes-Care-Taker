@@ -1,12 +1,34 @@
+import 'package:background_fetch/background_fetch.dart';
+import 'package:diabetes_care_taker/COMPONENTS_PAGES/medicationReminderPage.dart';
 import 'package:diabetes_care_taker/CONTROLLER_PAGE/insulinDosePageController.dart';
 import 'package:diabetes_care_taker/CONTROLLER_PAGE/mealDoseCalulationPageController.dart';
-// import 'package:diabetes_care_taker/CONTROLLER_PAGE/mealDoseCalulationPageController.dart';
 import 'package:diabetes_care_taker/PAGES/homePage.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+void backgroundFetchHeadlessTask() async {
+  showScheduleNotification();
+}
+
 void main() {
   runApp(const MyApp());
+  initPlatformState();
+}
+
+void initPlatformState() {
+  BackgroundFetch.configure(
+          BackgroundFetchConfig(
+            minimumFetchInterval: 15,
+            stopOnTerminate: false,
+            enableHeadless: true,
+            startOnBoot: true,
+          ),
+          backgroundFetchHeadlessTask)
+      .then((int status) {
+    debugPrint('[Background Fetch] configure success: $status');
+  }).catchError((e) {
+    debugPrint('[Background Fetch] configure ERROR: $e');
+  });
 }
 
 class MyApp extends StatelessWidget {

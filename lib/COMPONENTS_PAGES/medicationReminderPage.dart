@@ -1,7 +1,8 @@
 import 'package:diabetes_care_taker/PAGES/customToastPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
+import 'dart:convert';
 import 'package:timezone/timezone.dart' as tz;
 import 'package:timezone/data/latest.dart' as tz;
 
@@ -13,6 +14,24 @@ class NotificationDetailsModel {
 
   NotificationDetailsModel(
       this.title, this.description, this.dateTime, this.isDaily);
+
+  Map<String, dynamic> toMap() {
+    return {
+      'title': title,
+      'description': description,
+      'dateTime': dateTime.toIso8601String(),
+      'isDaily': isDaily,
+    };
+  }
+
+  factory NotificationDetailsModel.fromMap(Map<String, dynamic> map) {
+    return NotificationDetailsModel(
+      map['title'],
+      map['description'],
+      DateTime.parse(map['dateTime']),
+      map['isDaily'],
+    );
+  }
 }
 
 class medicationReminderPage extends StatefulWidget {
@@ -24,19 +43,17 @@ class medicationReminderPage extends StatefulWidget {
 
 class _medicationReminderPageState extends State<medicationReminderPage> {
   GlobalKey<FormState> form_key = GlobalKey<FormState>();
-  void validation_function() {
-    if (form_key.currentState!.validate()) {
-      CustomToast(message: "Added, swipe down to refresh");
-    } else {
-      CustomToast(message: "Not added, All Fields are required");
-    }
-  }
 
   @override
   void initState() {
     super.initState();
-
     initialization();
+    _loadNotifications();
+    setting_state();
+  }
+
+  void setting_state() {
+    setState(() {});
   }
 
   void showFormDialog(BuildContext context) {
@@ -53,6 +70,7 @@ class _medicationReminderPageState extends State<medicationReminderPage> {
                   child: Column(
                     children: [
                       TextFormField(
+                        autovalidateMode: AutovalidateMode.always,
                         validator: (value) {
                           if (value!.trimLeft().isEmpty) {
                             return "Title is required";
@@ -69,6 +87,7 @@ class _medicationReminderPageState extends State<medicationReminderPage> {
                       ),
                       const SizedBox(height: 16),
                       TextFormField(
+                        autovalidateMode: AutovalidateMode.always,
                         validator: (value) {
                           if (value!.trimLeft().isEmpty) {
                             return "Description is required";
@@ -85,6 +104,7 @@ class _medicationReminderPageState extends State<medicationReminderPage> {
                       ),
                       const SizedBox(height: 16),
                       TextFormField(
+                        autovalidateMode: AutovalidateMode.always,
                         validator: (value) {
                           if (value!.isEmpty) {
                             return "Date is required";
@@ -107,7 +127,6 @@ class _medicationReminderPageState extends State<medicationReminderPage> {
                                 firstDate: DateTime.now(),
                                 lastDate: DateTime(2095),
                               );
-
                               if (newlySelectedDate != null) {
                                 setState(() {
                                   dateTime = newlySelectedDate;
@@ -122,6 +141,7 @@ class _medicationReminderPageState extends State<medicationReminderPage> {
                       ),
                       const SizedBox(height: 16.0),
                       TextFormField(
+                        autovalidateMode: AutovalidateMode.always,
                         validator: (value) {
                           if (value!.isEmpty) {
                             return "Time is required";
@@ -142,7 +162,6 @@ class _medicationReminderPageState extends State<medicationReminderPage> {
                                 context: context,
                                 initialTime: TimeOfDay.now(),
                               );
-
                               if (selectedTime != null) {
                                 _time.text =
                                     '${selectedTime.hour}:${selectedTime.minute}';
@@ -185,10 +204,17 @@ class _medicationReminderPageState extends State<medicationReminderPage> {
                           ),
                           ElevatedButton(
                             onPressed: () {
-                              validation_function();
-                              showScheduleNotification();
-                              clear();
-                              Navigator.pop(context);
+                              if (form_key.currentState!.validate()) {
+                                showScheduleNotification();
+                                setting_state();
+                                clear();
+
+                                Navigator.pop(context);
+                              } else {
+                                CustomToast(
+                                    message:
+                                        "Not added, All Fields are required");
+                              }
                             },
                             child: Text('Show Notification'),
                           ),
@@ -222,15 +248,42 @@ class _medicationReminderPageState extends State<medicationReminderPage> {
                 itemBuilder: (context, index) {
                   final notification = _notifications[index];
                   return ListTile(
-                    title: Text(notification.title),
-                    subtitle: Text(notification.description),
-                    trailing: Text(
-                      '${notification.dateTime.year}-${notification.dateTime.month}-${notification.dateTime.day} ${notification.dateTime.hour}:${notification.dateTime.minute}',
+                    title: Text(
+                      notification.title,
+                      overflow: TextOverflow.ellipsis,
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                    subtitle: Text(
+                      notification.description,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        fontSize: 12,
+                      ),
+                    ),
+                    trailing: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          '${notification.dateTime.hour}:${notification.dateTime.minute}  ${notification.dateTime.day}/${notification.dateTime.month}/${notification.dateTime.year}',
+                          style: TextStyle(fontSize: 15, color: Colors.green),
+                        ),
+                        IconButton(
+                          icon: Icon(Icons.notification_add, color: Colors.red),
+                          onPressed: () {
+                            // _deleteNotification(index);
+                            // deleteSelectedSchedule(index);
+                            setting_state();
+                          },
+                        ),
+                      ],
                     ),
                   );
                 },
                 separatorBuilder: (BuildContext context, int index) {
-                  return Divider();
+                  return Divider(
+                    color: Color.fromARGB(255, 5, 65, 114),
+                  );
                 },
               ),
             ),
@@ -253,63 +306,53 @@ class _medicationReminderPageState extends State<medicationReminderPage> {
   }
 }
 
-////////////////////////////////////
-///
-////////////////////////////////
+//////////////
+//////////////
+///////////////
 
 final TextEditingController _title =
     TextEditingController(text: "Diabetes CareTaker");
 final TextEditingController _desc = TextEditingController(
-    text: "Its time to take your insulin, Make sure to take your insulin");
+    text: "It's time to take your insulin, Make sure to take your insulin");
 final TextEditingController _date = TextEditingController();
 final TextEditingController _time = TextEditingController();
-bool isDaily = false; // Checkbox state
-
+bool isDaily = false;
 DateTime dateTime = DateTime.now();
-int notificationId = 0; // Counter for generating unique notification IDs
-final List<NotificationDetailsModel> _notifications =
-    []; // List to store notifications
+int notificationId = 0;
+final List<NotificationDetailsModel> _notifications = [];
 
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
     FlutterLocalNotificationsPlugin();
 
-bool? isChecked = true;
-
 void initialization() {
   const AndroidInitializationSettings androidInitializationSettings =
       AndroidInitializationSettings('noti');
-
   const InitializationSettings initializationSettings = InitializationSettings(
     android: androidInitializationSettings,
     iOS: null,
   );
-
   flutterLocalNotificationsPlugin.initialize(
     initializationSettings,
   );
 }
 
-Future<void> showPUSHNotification() async {
-  const AndroidNotificationDetails androidNotificationDetails =
-      AndroidNotificationDetails(
-    'ScheduleNotification001',
-    'Notify Me',
-    importance: Importance.high,
-  );
+Future<void> _saveNotifications() async {
+  final prefs = await SharedPreferences.getInstance();
+  List<String> notificationStrings = _notifications.map((notification) {
+    return jsonEncode(notification.toMap());
+  }).toList();
+  prefs.setStringList('notifications', notificationStrings);
+}
 
-  const NotificationDetails notificationDetails = NotificationDetails(
-    android: androidNotificationDetails,
-    iOS: null,
-  );
-
-  await flutterLocalNotificationsPlugin.show(
-    notificationId++,
-    _title.text,
-    _desc.text,
-    notificationDetails,
-  );
-
-  _addNotificationDetails();
+Future<void> _loadNotifications() async {
+  final prefs = await SharedPreferences.getInstance();
+  List<String>? notificationStrings = prefs.getStringList('notifications');
+  if (notificationStrings != null) {
+    _notifications.clear();
+    _notifications.addAll(notificationStrings.map((notificationString) {
+      return NotificationDetailsModel.fromMap(jsonDecode(notificationString));
+    }).toList());
+  }
 }
 
 Future<void> showScheduleNotification() async {
@@ -365,6 +408,7 @@ void _addNotificationDetails() {
       isDaily,
     ),
   );
+  _saveNotifications();
 }
 
 void clear() {
@@ -372,3 +416,15 @@ void clear() {
   _time.text = "";
   isDaily = false;
 }
+
+// void deleteSelectedSchedule(int index) async {
+//   if (index < 0 || index >= _notifications.length) {
+//     return;
+//   }
+
+//   await flutterLocalNotificationsPlugin.cancel(index);
+
+//   _notifications.removeAt(index);
+
+//   _saveNotifications();
+// }

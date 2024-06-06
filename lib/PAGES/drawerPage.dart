@@ -2,7 +2,11 @@ import 'package:diabetes_care_taker/COMPONENTS_PAGES/model/educationLibraryPage.
 import 'package:diabetes_care_taker/COMPONENTS_PAGES/emergencyAlertPage.dart';
 import 'package:diabetes_care_taker/COMPONENTS_PAGES/exerciseTrackingPage.dart';
 import 'package:diabetes_care_taker/COMPONENTS_PAGES/testReminderPage.dart';
+import 'package:diabetes_care_taker/connection/ConnectionClass.dart';
+
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 class drawerPage extends StatelessWidget {
   const drawerPage({super.key});
@@ -21,11 +25,14 @@ class drawerPage extends StatelessWidget {
           ListTile(
             horizontalTitleGap: 0,
             onTap: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => educationLibraryPage(),
-                  ));
+              ConnectionClass()
+                  .connection_function_navigator(educationLibraryPage());
+              // Get.to(educationLibraryPage());
+              // Navigator.push(
+              //     context,
+              //     MaterialPageRoute(
+              //       builder: (context) => educationLibraryPage(),
+              //     ));
             },
             leading: Icon(Icons.library_books,
                 color: Colors.black,
@@ -76,11 +83,13 @@ class drawerPage extends StatelessWidget {
           ListTile(
             horizontalTitleGap: 0,
             onTap: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => emergencyAlertPage(),
-                  ));
+              ConnectionClass()
+                  .connection_function_navigator(emergencyAlertPage());
+              //   Navigator.push(
+              //       context,
+              //       MaterialPageRoute(
+              //         builder: (context) => emergencyAlertPage(),
+              //       ));
             },
             leading: Icon(
               Icons.bus_alert,

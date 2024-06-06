@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -29,71 +30,76 @@ class _educationLibraryPageState extends State<educationLibraryPage> {
     }
   }
 
+  ///////////////////////////////////////////////////
+  ///////////////////////////////////////////////////
+
   @override
   void initState() {
     super.initState();
+
     fetchArticles();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Diabetes Articles'),
-        ),
-        body: ListView.separated(
-            itemBuilder: (context, index) {
-              return ListTile(
-                leading: CircleAvatar(child: Text('${index + 1}')),
-                title: FutureBuilder(
-                  future: fetchArticleTitletitle(articles[index]['id']),
-                  builder: (context, snapshot) {
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      return LoadingAnimationWidget.threeArchedCircle(
-                        size: MediaQuery.of(context).size.height * 0.05,
-                        color: Colors.blue,
-                      );
-                    } else if (snapshot.hasError) {
-                      return Text(
-                        'Loading...',
-                      );
-                    } else {
-                      return Text(
-                        snapshot.data.toString(),
-                        style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.w900),
-                      );
-                    }
-                  },
-                ),
-                subtitle: FutureBuilder(
-                  future: fetchArticleTitle(articles[index]['id']),
-                  builder: (context, snapshot) {
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      return Text("loading...");
-                    } else if (snapshot.hasError) {
-                      return Row(
-                        children: [
-                          Text(
-                            "THis article may take a while",
-                            style: TextStyle(fontSize: 14),
-                          ),
-                        ],
-                      );
-                    } else {
-                      return Text(
-                        snapshot.data.toString(),
-                        style: TextStyle(fontSize: 14),
-                      );
-                    }
-                  },
-                ),
-              );
-            },
-            separatorBuilder: (context, index) {
-              return Divider();
-            },
-            itemCount: articles.length));
+      appBar: AppBar(
+        title: Text('Diabetes Articles'),
+      ),
+      body: ListView.separated(
+          itemBuilder: (context, index) {
+            return ListTile(
+              leading: CircleAvatar(child: Text('${index + 1}')),
+              title: FutureBuilder(
+                future: fetchArticleTitletitle(articles[index]['id']),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return LoadingAnimationWidget.threeArchedCircle(
+                      size: MediaQuery.of(context).size.height * 0.05,
+                      color: Colors.blue,
+                    );
+                  } else if (snapshot.hasError) {
+                    return Text(
+                      'Loading...',
+                    );
+                  } else {
+                    return Text(
+                      snapshot.data.toString(),
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.w900),
+                    );
+                  }
+                },
+              ),
+              subtitle: FutureBuilder(
+                future: fetchArticleTitle(articles[index]['id']),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return Text("loading...");
+                  } else if (snapshot.hasError) {
+                    return Row(
+                      children: [
+                        Text(
+                          "THis article may take a while",
+                          style: TextStyle(fontSize: 14),
+                        ),
+                      ],
+                    );
+                  } else {
+                    return Text(
+                      snapshot.data.toString(),
+                      style: TextStyle(fontSize: 14),
+                    );
+                  }
+                },
+              ),
+            );
+          },
+          separatorBuilder: (context, index) {
+            return Divider();
+          },
+          itemCount: articles.length),
+    );
   }
 
   Future<String> fetchArticleTitle(String id) async {
@@ -123,7 +129,44 @@ class _educationLibraryPageState extends State<educationLibraryPage> {
 
 
 
+/**
+ 
+String status = "Waiting...";
+  Connectivity _connectivity = Connectivity();
+  bool isinternet = true;
 
+ checkRealtimeConnection();
+
+ checkRealtimeConnection() {
+    _connectivity.onConnectivityChanged.listen((event) {
+      setState(() {
+        if (event[0].name == "none") {
+          // CustomToast(message: "no internet connection");
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('You lost internet connection'),
+              duration: Duration(
+                  seconds:
+                      30), // Set a long duration to ensure the Snackbar stays visible
+              action: SnackBarAction(
+                label: 'OK',
+                onPressed: () {
+                  // Code to execute when the user presses the 'OK' button
+                  ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                },
+              ),
+            ),
+          );
+          setState(() {
+            isinternet = false;
+          });
+        }
+      });
+    });
+  }
+
+ 
+ */
 
 
 

@@ -3,7 +3,9 @@ import 'package:diabetes_care_taker/COMPONENTS_PAGES/medicationReminderPage.dart
 import 'package:diabetes_care_taker/CONTROLLER_PAGE/insulinDosePageController.dart';
 import 'package:diabetes_care_taker/CONTROLLER_PAGE/mealDoseCalulationPageController.dart';
 import 'package:diabetes_care_taker/PAGES/homePage.dart';
+import 'package:diabetes_care_taker/connection/ConnectionClass.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:provider/provider.dart';
 
 void backgroundFetchHeadlessTask() async {
@@ -31,8 +33,20 @@ void initPlatformState() {
   });
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    ConnectionClass().connection_function();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +59,7 @@ class MyApp extends StatelessWidget {
           create: (context) => mealDoseCalculationPageController(),
         ),
       ],
-      child: MaterialApp(
+      child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Diabetes Care Taker',
         theme: ThemeData(

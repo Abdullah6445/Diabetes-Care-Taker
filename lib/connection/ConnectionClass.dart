@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_rx/src/rx_typedefs/rx_typedefs.dart';
+
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 
 class ConnectionClass {

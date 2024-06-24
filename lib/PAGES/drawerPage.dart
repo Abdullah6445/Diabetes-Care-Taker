@@ -83,8 +83,9 @@ class drawerPage extends StatelessWidget {
           ListTile(
             horizontalTitleGap: 0,
             onTap: () {
-              ConnectionClass()
-                  .connection_function_navigator(emergencyAlertPage());
+              // ConnectionClass()
+              //     .connection_function_navigator(emergencyAlertPage());
+              Get.to(emergencyAlertPage());
               //   Navigator.push(
               //       context,
               //       MaterialPageRoute(

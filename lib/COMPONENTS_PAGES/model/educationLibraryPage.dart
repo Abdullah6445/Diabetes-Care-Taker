@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:diabetes_care_taker/PAGES/popupMenuPage.dart';
 import 'package:flutter/material.dart';
-
 import 'package:http/http.dart' as http;
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
@@ -30,13 +30,9 @@ class _educationLibraryPageState extends State<educationLibraryPage> {
     }
   }
 
-  ///////////////////////////////////////////////////
-  ///////////////////////////////////////////////////
-
   @override
   void initState() {
     super.initState();
-
     fetchArticles();
   }
 
@@ -45,13 +41,16 @@ class _educationLibraryPageState extends State<educationLibraryPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Diabetes Articles'),
+        actions: [
+          popupMenuPage(),
+        ],
       ),
       body: ListView.separated(
           itemBuilder: (context, index) {
             return ListTile(
               leading: CircleAvatar(child: Text('${index + 1}')),
               title: FutureBuilder(
-                future: fetchArticleTitletitle(articles[index]['id']),
+                future: fetchArticleTitle(articles[index]['id']),
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return LoadingAnimationWidget.threeArchedCircle(
@@ -59,9 +58,7 @@ class _educationLibraryPageState extends State<educationLibraryPage> {
                       color: Colors.blue,
                     );
                   } else if (snapshot.hasError) {
-                    return Text(
-                      'Loading...',
-                    );
+                    return Text('Loading...');
                   } else {
                     return Text(
                       snapshot.data.toString(),
@@ -72,7 +69,7 @@ class _educationLibraryPageState extends State<educationLibraryPage> {
                 },
               ),
               subtitle: FutureBuilder(
-                future: fetchArticleTitle(articles[index]['id']),
+                future: fetchArticleDescription(articles[index]['id']),
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return Text("loading...");
@@ -80,7 +77,7 @@ class _educationLibraryPageState extends State<educationLibraryPage> {
                     return Row(
                       children: [
                         Text(
-                          "THis article may take a while",
+                          "This article may take a while",
                           style: TextStyle(fontSize: 14),
                         ),
                       ],
@@ -93,6 +90,17 @@ class _educationLibraryPageState extends State<educationLibraryPage> {
                   }
                 },
               ),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ArticleDetailPage(
+                      id: articles[index]['id'],
+                      index: index,
+                    ),
+                  ),
+                );
+              },
             );
           },
           separatorBuilder: (context, index) {
@@ -106,22 +114,298 @@ class _educationLibraryPageState extends State<educationLibraryPage> {
     final response = await http.get(Uri.parse(
         'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&id=$id&retmode=json'));
     if (response.statusCode == 200) {
-      return json.decode(response.body)['result'][id]['sorttitle'];
-    } else {
-      throw Exception('Failed to load article title');
-    }
-  }
-
-  Future<String> fetchArticleTitletitle(String id) async {
-    final response = await http.get(Uri.parse(
-        'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&id=$id&retmode=json'));
-    if (response.statusCode == 200) {
       return json.decode(response.body)['result'][id]['title'];
     } else {
       throw Exception('Failed to load article title');
     }
   }
+
+  Future<String> fetchArticleDescription(String id) async {
+    final response = await http.get(Uri.parse(
+        'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&id=$id&retmode=json'));
+    if (response.statusCode == 200) {
+      return json.decode(response.body)['result'][id]['sorttitle'];
+    } else {
+      throw Exception('Failed to load article description');
+    }
+  }
 }
+
+class ArticleDetailPage extends StatelessWidget {
+  final String id;
+  final int index;
+
+  ArticleDetailPage({required this.id, required this.index});
+
+  Future<Map<String, String>> fetchArticleDetails(String id) async {
+    final response = await http.get(Uri.parse(
+        'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&id=$id&retmode=json'));
+    if (response.statusCode == 200) {
+      final result = json.decode(response.body)['result'][id];
+      return {
+        'title': result['title'],
+        'description': result['sorttitle'],
+      };
+    } else {
+      throw Exception('Failed to load article details');
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Article Details - ${index + 1}'),
+        actions: [
+          popupMenuPage(),
+        ],
+      ),
+      body: FutureBuilder<Map<String, String>>(
+        future: fetchArticleDetails(id),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(
+              child: LoadingAnimationWidget.threeArchedCircle(
+                size: MediaQuery.of(context).size.height * 0.05,
+                color: Colors.blue,
+              ),
+            );
+          } else if (snapshot.hasError) {
+            return Center(
+              child: Text('Failed to load article details'),
+            );
+          } else {
+            final articleDetails = snapshot.data!;
+            return Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    articleDetails['title']!,
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(height: 16),
+                  Text(
+                    articleDetails['description']!,
+                    style: TextStyle(fontSize: 18),
+                  ),
+                ],
+              ),
+            );
+          }
+        },
+      ),
+    );
+  }
+}
+
+
+// import 'dart:async';
+// import 'dart:convert';
+
+// import 'package:flutter/material.dart';
+
+// import 'package:http/http.dart' as http;
+// import 'package:loading_animation_widget/loading_animation_widget.dart';
+
+// class educationLibraryPage extends StatefulWidget {
+//   @override
+//   _educationLibraryPageState createState() => _educationLibraryPageState();
+// }
+
+// class _educationLibraryPageState extends State<educationLibraryPage> {
+//   List<Map<String, dynamic>> articles = [];
+
+//   Future<void> fetchArticles() async {
+//     final response = await http.get(Uri.parse(
+//         'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=1000&term=diabetes'));
+
+//     if (response.statusCode == 200) {
+//       setState(() {
+//         articles =
+//             (json.decode(response.body)['esearchresult']['idlist'] as List)
+//                 .map((id) => {'id': id})
+//                 .toList();
+//       });
+//     } else {
+//       throw Exception('Failed to load articles');
+//     }
+//   }
+
+//   ///////////////////////////////////////////////////
+//   ///////////////////////////////////////////////////
+
+//   @override
+//   void initState() {
+//     super.initState();
+
+//     fetchArticles();
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text('Diabetes Articles'),
+//       ),
+//       body: ListView.separated(
+//           itemBuilder: (context, index) {
+//             return ListTile(
+//               leading: CircleAvatar(child: Text('${index + 1}')),
+//               title: FutureBuilder(
+//                 future: fetchArticleTitletitle(articles[index]['id']),
+//                 builder: (context, snapshot) {
+//                   if (snapshot.connectionState == ConnectionState.waiting) {
+//                     return LoadingAnimationWidget.threeArchedCircle(
+//                       size: MediaQuery.of(context).size.height * 0.05,
+//                       color: Colors.blue,
+//                     );
+//                   } else if (snapshot.hasError) {
+//                     return Text(
+//                       'Loading...',
+//                     );
+//                   } else {
+//                     return Text(
+//                       snapshot.data.toString(),
+//                       style:
+//                           TextStyle(fontSize: 18, fontWeight: FontWeight.w900),
+//                     );
+//                   }
+//                 },
+//               ),
+//               subtitle: FutureBuilder(
+//                 future: fetchArticleTitle(articles[index]['id']),
+//                 builder: (context, snapshot) {
+//                   if (snapshot.connectionState == ConnectionState.waiting) {
+//                     return Text("loading...");
+//                   } else if (snapshot.hasError) {
+//                     return Row(
+//                       children: [
+//                         Text(
+//                           "THis article may take a while",
+//                           style: TextStyle(fontSize: 14),
+//                         ),
+//                       ],
+//                     );
+//                   } else {
+//                     return Text(
+//                       snapshot.data.toString(),
+//                       style: TextStyle(fontSize: 14),
+//                     );
+//                   }
+//                 },
+//               ),
+//             );
+//           },
+//           separatorBuilder: (context, index) {
+//             return Divider();
+//           },
+//           itemCount: articles.length),
+//     );
+//   }
+
+//   Future<String> fetchArticleTitle(String id) async {
+//     final response = await http.get(Uri.parse(
+//         'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&id=$id&retmode=json'));
+//     if (response.statusCode == 200) {
+//       return json.decode(response.body)['result'][id]['sorttitle'];
+//     } else {
+//       throw Exception('Failed to load article title');
+//     }
+//   }
+
+//   Future<String> fetchArticleTitletitle(String id) async {
+//     final response = await http.get(Uri.parse(
+//         'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&id=$id&retmode=json'));
+//     if (response.statusCode == 200) {
+//       return json.decode(response.body)['result'][id]['title'];
+//     } else {
+//       throw Exception('Failed to load article title');
+//     }
+//   }
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

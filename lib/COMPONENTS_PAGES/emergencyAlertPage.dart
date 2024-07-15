@@ -1,4 +1,5 @@
 import 'package:diabetes_care_taker/PAGES/customToastPage.dart';
+import 'package:diabetes_care_taker/PAGES/popupMenuPage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -283,6 +284,8 @@ class _emergencyAlertPageState extends State<emergencyAlertPage> {
             ),
             onPressed: showDeleteContactDialog,
           ),
+          popupMenuPage(),
+
           // Replace `popupMenuPage()` with your actual implementation
           // popupMenuPage(),
         ],

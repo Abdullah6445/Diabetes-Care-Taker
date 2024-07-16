@@ -79,7 +79,7 @@ class popupMenuPage extends StatelessWidget {
             Get.to(
               DetailPopUpButtonPage(
                 title: "Terms and Privacy Policy",
-                // content1: "This is Terms and Privacy Policy section",
+                widget_widget: PopUpMenuClass().TermsAndPrivacyWidget,
               ),
             );
           },
@@ -95,22 +95,11 @@ class popupMenuPage extends StatelessWidget {
 class DetailPopUpButtonPage extends StatelessWidget {
   var title;
   Widget? widget_widget;
-  var content2;
-  var content3;
-  var content4;
-  var content5;
-
-  var imagePath;
 
   DetailPopUpButtonPage({
     super.key,
     this.title,
     this.widget_widget,
-    this.content2,
-    this.content3,
-    this.content4,
-    this.content5,
-    this.imagePath,
   });
 
   @override

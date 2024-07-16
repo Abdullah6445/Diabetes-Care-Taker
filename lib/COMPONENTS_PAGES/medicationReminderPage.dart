@@ -281,54 +281,68 @@ class _medicationReminderPageState extends State<medicationReminderPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: RefreshIndicator(
-        key: refreshIndicatorKey,
-        onRefresh: handleRefresh,
-        child: Column(
-          children: [
-            Expanded(
-              child: ListView.separated(
-                itemCount: _notifications.length,
-                itemBuilder: (context, index) {
-                  final notification = _notifications[index];
-                  return ListTile(
-                    title: Text(
-                      notification.title,
-                      overflow: TextOverflow.ellipsis,
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                    ),
-                    subtitle: Text(
-                      notification.description,
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(fontSize: 12),
-                    ),
-                    trailing: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(
-                          '${notification.dateTime.hour}:${notification.dateTime.minute}  ${notification.dateTime.day}/${notification.dateTime.month}/${notification.dateTime.year}',
-                          style: TextStyle(fontSize: 15, color: Colors.green),
-                        ),
-                        IconButton(
-                          icon: Icon(Icons.delete_forever, color: Colors.red),
-                          onPressed: () async {
-                            await deleteNotification(index);
-                            refreshIndicatorKey.currentState?.show();
-                          },
-                        ),
-                      ],
-                    ),
-                  );
-                },
-                separatorBuilder: (BuildContext context, int index) {
-                  return Divider(
-                    color: Color.fromARGB(255, 5, 65, 114),
-                  );
-                },
-              ),
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(
+              "assets/images/watchhhh.jpg",
             ),
-          ],
+            opacity: .08,
+
+            scale: 3, // Adjust the scale to make the image smaller
+            // fit: BoxFit.none, // Ensure the image is not stretched or zoomed
+            // alignment: Alignment.topLeft,
+          ),
+        ),
+        child: RefreshIndicator(
+          key: refreshIndicatorKey,
+          onRefresh: handleRefresh,
+          child: Column(
+            children: [
+              Expanded(
+                child: ListView.separated(
+                  itemCount: _notifications.length,
+                  itemBuilder: (context, index) {
+                    final notification = _notifications[index];
+                    return ListTile(
+                      title: Text(
+                        notification.title,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                      subtitle: Text(
+                        notification.description,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(fontSize: 12),
+                      ),
+                      trailing: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            '${notification.dateTime.hour}:${notification.dateTime.minute}  ${notification.dateTime.day}/${notification.dateTime.month}/${notification.dateTime.year}',
+                            style: TextStyle(fontSize: 15, color: Colors.green),
+                          ),
+                          IconButton(
+                            icon: Icon(Icons.delete_forever, color: Colors.red),
+                            onPressed: () async {
+                              await deleteNotification(index);
+                              refreshIndicatorKey.currentState?.show();
+                            },
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                  separatorBuilder: (BuildContext context, int index) {
+                    return Divider(
+                      color: Color.fromARGB(255, 5, 65, 114),
+                    );
+                  },
+                ),
+              ),
+            ],
+          ),
         ),
       ),
       floatingActionButton: Row(

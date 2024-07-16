@@ -262,7 +262,9 @@ class PopUpMenuClass {
             mainAxisSize: MainAxisSize.min,
             children: [
               CircleAvatar(
-                  radius: 50, child: Image.asset("assets/images/person.png")),
+                radius: 50,
+                backgroundImage: AssetImage("assets/images/Abdullah.jpg"),
+              ),
               SizedBox(height: 10),
               Text(
                 'Abdullah Iftikhar',
@@ -281,7 +283,6 @@ class PopUpMenuClass {
                     color: Colors.red.shade500,
                   ),
                 ),
-                // onTap: () => _launchURL('mailto:your.email@example.com'),
                 onTap: () {
                   String url =
                       'mailto:abdullahiftikhar6445@gmail.com?subject=User From Diabetes CareTaker App';
@@ -293,9 +294,19 @@ class PopUpMenuClass {
                   Icons.link,
                   color: Colors.black,
                 ),
-                title: Text('LinkedIn'),
-                // onTap: () => _launchURL('https://www.linkedin.com/in/yourprofile'),
-                onTap: () {},
+                title: Text(
+                  'https://www.linkedin.com/in/abdullah-iftikhar-b12866290?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
+                  style: TextStyle(
+                    overflow: TextOverflow.ellipsis,
+                    decoration: TextDecoration.underline,
+                    color: Colors.red.shade500,
+                  ),
+                ),
+                onTap: () {
+                  String url =
+                      'https://www.linkedin.com/in/abdullah-iftikhar-b12866290?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app';
+                  launchUrl(Uri.parse(url));
+                },
               ),
             ],
           ),
@@ -310,7 +321,11 @@ class PopUpMenuClass {
             mainAxisSize: MainAxisSize.min,
             children: [
               CircleAvatar(
-                  radius: 50, child: Image.asset("assets/images/person.png")),
+                radius: 50,
+                backgroundImage: AssetImage("assets/images/zeeshan.jpg"),
+              ),
+              // CircleAvatar(
+              //     radius: 50, child: Image.asset("assets/images/zeeshan.jpg")),
               SizedBox(height: 10),
               Text(
                 'Zeeshan Haider',
@@ -323,16 +338,15 @@ class PopUpMenuClass {
                   color: Colors.black,
                 ),
                 title: Text(
-                  'abdullahiftikhar6445@gmail.com',
+                  'zh150785@gmail.com',
                   style: TextStyle(
                     decoration: TextDecoration.underline,
                     color: Colors.red.shade500,
                   ),
                 ),
-                // onTap: () => _launchURL('mailto:your.email@example.com'),
                 onTap: () {
                   String url =
-                      'mailto:abdullahiftikhar6445@gmail.com?subject=User From Diabetes CareTaker App';
+                      'mailto:zh150785@gmail.com?subject=User From Diabetes CareTaker App';
                   launchUrl(Uri.parse(url));
                 },
               ),
@@ -341,30 +355,122 @@ class PopUpMenuClass {
                   Icons.link,
                   color: Colors.black,
                 ),
-                title: Text('LinkedIn'),
-                // onTap: () => _launchURL('https://www.linkedin.com/in/yourprofile'),
-                onTap: () {},
+                title: Text(
+                  'https://www.linkedin.com/in/muhammad-zeeshan-haider-1b610a283?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
+                  style: TextStyle(
+                    overflow: TextOverflow.ellipsis,
+                    decoration: TextDecoration.underline,
+                    color: Colors.red.shade500,
+                  ),
+                ),
+                onTap: () {
+                  String url =
+                      'https://www.linkedin.com/in/muhammad-zeeshan-haider-1b610a283?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app';
+                  launchUrl(Uri.parse(url));
+                },
               ),
             ],
           ),
         ),
       ),
-
-      // Text("data"),
-      // Text("data2"),
-      // ListTile(
-      //   leading: CircleAvatar(child: Image.asset("assets/images/person.png")),
-      //   title: Text(
-      //     "Abdullah",
-      //     overflow: TextOverflow.ellipsis,
-      //     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-      //   ),
-      //   subtitle: Text(
-      //     "20781556-045"!,
-      //     overflow: TextOverflow.ellipsis,
-      //     style: TextStyle(fontSize: 12),
-      //   ),
-      // ),
     ],
+  );
+  Widget TermsAndPrivacyWidget = RichText(
+    text: TextSpan(
+      style: TextStyle(
+        color: Colors.black,
+        fontSize: 18,
+        fontWeight: FontWeight.w500,
+      ),
+      children: [
+        TextSpan(
+          text: "Terms and Privacy Policy\n",
+          style: TextStyle(
+            decoration: TextDecoration.underline,
+            color: Colors.red.shade900,
+            fontSize: 20,
+            fontWeight: FontWeight.w900,
+          ),
+        ),
+        TextSpan(
+          text:
+              "It is important to understand that the App is not a substitute for professional medical advice, diagnosis, or treatment.",
+        ),
+        TextSpan(
+          text: "\n\n1) No Professional-Patient Relationship:",
+          style: TextStyle(
+            decoration: TextDecoration.underline,
+            color: Colors.red.shade900,
+            fontSize: 20,
+            fontWeight: FontWeight.w900,
+          ),
+        ),
+        TextSpan(
+          text:
+              "\nUse of the App does not create a professional-patient relationship between you and the developers, staff, or any other party associated with the App. The information and features provided by the App are for informational and organizational purposes only.",
+        ),
+        TextSpan(
+          text: "\n\n2) Information Accuracy:\n",
+          style: TextStyle(
+            decoration: TextDecoration.underline,
+            color: Colors.red.shade900,
+            fontSize: 20,
+            fontWeight: FontWeight.w900,
+          ),
+        ),
+        TextSpan(
+          text:
+              "While we strive to provide accurate and up-to-date information, we cannot guarantee the accuracy, completeness, or reliability of any information provided by the App. Medical science is constantly evolving, and new research can affect the accuracy of health-related information. Therefore, the App's content should not be considered comprehensive or current.",
+        ),
+
+        /////////
+        ///
+        ///
+        ///
+        ///
+
+        TextSpan(
+          text: "\n\n3) Consult with Healthcare Providers:\n",
+          style: TextStyle(
+            decoration: TextDecoration.underline,
+            color: Colors.red.shade900,
+            fontSize: 20,
+            fontWeight: FontWeight.w900,
+          ),
+        ),
+        TextSpan(
+          text:
+              "Primary Source of Care: Always consult your physician or other qualified health provider regarding any questions or concerns you have about your health or medical condition.\nEmergency Situations: In the event of a medical emergency, call your doctor or emergency services immediately.",
+        ),
+
+        TextSpan(
+          text: "\n\n4)No Treatment:\n",
+          style: TextStyle(
+            decoration: TextDecoration.underline,
+            color: Colors.red.shade900,
+            fontSize: 20,
+            fontWeight: FontWeight.w900,
+          ),
+        ),
+        TextSpan(
+          text:
+              "The App does not create or recommend treatment plans. Any treatment or medication adjustments should be made in consultation with your healthcare provider.",
+        ),
+
+        TextSpan(
+          text: "\n\n5) Limitations of Use:\n",
+          style: TextStyle(
+            decoration: TextDecoration.underline,
+            color: Colors.red.shade900,
+            fontSize: 20,
+            fontWeight: FontWeight.w900,
+          ),
+        ),
+        TextSpan(
+          text:
+              "Scope of Information: The health-related information provided by the App is limited to general knowledge and user-generated data. It is not a comprehensive source of medical advice or treatment.",
+        ),
+      ],
+    ),
   );
 }

@@ -1,4 +1,4 @@
-import 'package:diabetes_care_taker/COMPONENTS_PAGES/bloodMonitoringPage.dart';
+import 'package:diabetes_care_taker/COMPONENTS_PAGES/bloodGlucoseMonitoing.dart';
 import 'package:diabetes_care_taker/COMPONENTS_PAGES/healthInsightsPage.dart';
 import 'package:diabetes_care_taker/COMPONENTS_PAGES/insulinDosePage.dart';
 import 'package:diabetes_care_taker/COMPONENTS_PAGES/medicationReminderPage.dart';
@@ -78,8 +78,8 @@ class homePage extends StatelessWidget {
           ),
         ),
         body: TabBarView(children: [
-          bloodMonitoringPage(),
-          healthInsightsPage(),
+          bloodGlucoseMonitoring(),
+          healthIsightsPage(),
           insulinDosePage(),
           medicationReminderPage(),
         ]),

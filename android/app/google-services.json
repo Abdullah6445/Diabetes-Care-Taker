@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "64488744286",
+    "project_id": "diabetes-care-taker",
+    "storage_bucket": "diabetes-care-taker.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:64488744286:android:5140bf62710ea6a9ab9bcf",
+        "android_client_info": {
+          "package_name": "com.example.diabetes_care_taker"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBlSg0mtKzixIbNBXPSXJNbLmYlOFieCfQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

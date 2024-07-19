@@ -49,9 +49,6 @@
 //   }
 // }
 
-
-
-
 //////////////////////////////////////////////////////////////////////////////////////////////
 
 import 'package:flutter/material.dart';
@@ -68,6 +65,7 @@ class customTextFormField extends StatelessWidget {
   final bool? obscurityy;
   final bool? readOnlyy;
   final String? Function(String?)? validatorrr;
+  final VoidCallback? onTap;
 
   const customTextFormField({
     super.key,
@@ -81,17 +79,19 @@ class customTextFormField extends StatelessWidget {
     this.obscurityy = false,
     this.readOnlyy = false,
     this.validatorrr,
+    this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 13, vertical: 7),
       child: TextFormField(
         controller: controllerr,
         obscureText: obscurityy!,
         validator: validatorrr,
         readOnly: readOnlyy!,
+        onTap: onTap,
         decoration: InputDecoration(
           prefixIcon: prefixIconn,
           prefixIconColor: iconColors,

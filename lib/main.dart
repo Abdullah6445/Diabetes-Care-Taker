@@ -7,12 +7,18 @@ import 'package:diabetes_care_taker/connection/ConnectionClass.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:provider/provider.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:diabetes_care_taker/COMPONENTS_PAGES/loginScreen.dart';
+import 'package:diabetes_care_taker/COMPONENTS_PAGES/signupScreen.dart';
+import 'package:diabetes_care_taker/COMPONENTS_PAGES/splashScreen.dart';
 
 void backgroundFetchHeadlessTask() async {
   showScheduleNotification();
 }
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
   initPlatformState();
 }
@@ -74,7 +80,13 @@ class _MyAppState extends State<MyApp> {
           ),
           useMaterial3: false,
         ),
-        home: homePage(),
+        initialRoute: '/splashscreen',
+        routes: {
+          '/splashscreen': (context) => splashScreen(),
+          '/login': (context) => loginScreen(),
+          '/signup': (context) => signupScreen(),
+          '/home': (context) => homePage(),
+        },
       ),
     );
   }

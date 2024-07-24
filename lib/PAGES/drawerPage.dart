@@ -3,13 +3,15 @@ import 'package:diabetes_care_taker/COMPONENTS_PAGES/emergencyAlertPage.dart';
 import 'package:diabetes_care_taker/COMPONENTS_PAGES/exerciseTrackingPage.dart';
 import 'package:diabetes_care_taker/COMPONENTS_PAGES/testReminderPage.dart';
 import 'package:diabetes_care_taker/connection/ConnectionClass.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
 class drawerPage extends StatelessWidget {
-  const drawerPage({super.key});
+  drawerPage({super.key});
+  final _auth = FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -107,7 +109,10 @@ class drawerPage extends StatelessWidget {
           ),
           ListTile(
             horizontalTitleGap: 0,
-            onTap: () {},
+            onTap: () async {
+              await _auth.signOut();
+              Navigator.pushReplacementNamed(context, '/login');
+            },
             leading: Icon(
               Icons.logout,
               size: MediaQuery.of(context).size.height * .033,

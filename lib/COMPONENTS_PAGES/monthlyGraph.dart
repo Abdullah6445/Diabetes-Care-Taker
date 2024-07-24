@@ -44,7 +44,10 @@ class _monthlyGraphState extends State<monthlyGraph> {
           .collection('users')
           .doc(userId)
           .collection('entries')
-          .where('Date', isGreaterThanOrEqualTo: DateFormat('yyyy-MM-dd').format(_startDate), isLessThanOrEqualTo: DateFormat('yyyy-MM-dd').format(_endDate))
+          .where('Date',
+              isGreaterThanOrEqualTo:
+                  DateFormat('yyyy-MM-dd').format(_startDate),
+              isLessThanOrEqualTo: DateFormat('yyyy-MM-dd').format(_endDate))
           .get();
 
       if (snapshot.docs.isEmpty) {
@@ -107,6 +110,9 @@ class _monthlyGraphState extends State<monthlyGraph> {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    double reductionFraction = 0.3;
+    double adjustedHeight = screenHeight - (screenHeight * reductionFraction);
     return Scaffold(
       appBar: AppBar(
         title: Text('Monthly Blood Glucose Graph'),
@@ -135,39 +141,54 @@ class _monthlyGraphState extends State<monthlyGraph> {
                   : _errorMessage.isNotEmpty
                       ? Center(child: Text(_errorMessage))
                       : _noData
-                          ? Center(child: Text('No blood glucose readings were entered to show'))
+                          ? Center(
+                              child: Text(
+                                  'No blood glucose readings were entered to show'))
                           : Center(
                               child: SizedBox(
-                                height: MediaQuery.of(context).size.height / 2,
+                                height: adjustedHeight,
                                 child: LineChart(
                                   LineChartData(
                                     gridData: FlGridData(show: true),
                                     titlesData: FlTitlesData(
                                       bottomTitles: _getBottomTitles(),
                                       leftTitles: _getLeftTitles(),
-                                      rightTitles: SideTitles(showTitles: false),
+                                      rightTitles:
+                                          SideTitles(showTitles: false),
                                       topTitles: SideTitles(showTitles: false),
                                     ),
                                     borderData: FlBorderData(
                                       show: true,
                                       border: Border(
-                                        bottom: BorderSide(color: Colors.black, width: 1),
-                                        left: BorderSide(color: Colors.black, width: 1),
-                                        right: BorderSide(color: Colors.transparent),
-                                        top: BorderSide(color: Colors.transparent),
+                                        bottom: BorderSide(
+                                            color: Colors.transparent),
+                                        left: BorderSide(
+                                            color: Colors.transparent),
+                                        right: BorderSide(
+                                            color: Colors.transparent),
+                                        top: BorderSide(
+                                            color: Colors.transparent),
                                       ),
                                     ),
                                     minX: 0,
-                                    maxX: _endDate.difference(_startDate).inDays.toDouble() - 1,
+                                    maxX: _endDate
+                                            .difference(_startDate)
+                                            .inDays
+                                            .toDouble() -
+                                        1,
                                     minY: 0,
                                     maxY: 400,
                                     lineBarsData: [
                                       LineChartBarData(
                                         spots: _dataPoints,
-                                        isCurved: false,
+                                        isCurved: true,
                                         colors: [Colors.blue],
                                         barWidth: 2,
-                                        belowBarData: BarAreaData(show: false, colors: [Colors.blue.withOpacity(0.1)]),
+                                        belowBarData: BarAreaData(
+                                            show: false,
+                                            colors: [
+                                              Colors.blue.withOpacity(0.1)
+                                            ]),
                                         dotData: FlDotData(show: true),
                                         dashArray: [5, 5],
                                       ),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:diabetes_care_taker/COMPONENTS_PAGES/bloodGlucoseMonitoing.dart';
 import 'package:diabetes_care_taker/PAGES/customTextFormFieldPage.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 

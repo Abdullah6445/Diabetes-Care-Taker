@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:diabetes_care_taker/PAGES/customTextFormFieldPage.dart';
-import 'package:dropdown_button2/dropdown_button2.dart';
+// import 'package:dropdown_button2/dropdown_button2.dart';
 
 class signupScreen extends StatefulWidget {
   @override
@@ -32,7 +32,7 @@ class _signupScreenState extends State<signupScreen> {
               children: [
                 CircleAvatar(
                   radius: 70,
-                  backgroundColor: Colors.white,
+                  backgroundColor: Colors.white70,
                   backgroundImage: AssetImage('assets/images/Signup_Icon.png'),
                 ),
                 SizedBox(

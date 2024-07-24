@@ -85,12 +85,28 @@ class insulinDosePage extends StatelessWidget {
                 prefixIconn: Icon(Icons.medical_services),
                 keyboardType: TextInputType.number,
               ),
-              ElevatedButton(
-                  onPressed: () {
-                    // insulindosepagecontroller.validation();
-                    insulindosepagecontroller.calculateisf();
-                  },
-                  child: Text('Calculate ISF(Insulin Sensitivity Factor)')),
+              SizedBox(
+                height: 15,
+              ),
+              SizedBox(
+                width: 300,
+                height: 45,
+                child: ElevatedButton(
+                    onPressed: () {
+                      // insulindosepagecontroller.validation();
+                      insulindosepagecontroller.calculateisf();
+                    },
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30.0),
+                      ),
+                    ),
+                    child: Text('Calculate ISF(Insulin Sensitivity Factor)',
+                        style: TextStyle(fontSize: 15))),
+              ),
+              SizedBox(
+                height: 10,
+              ),
               Consumer<insulinDosePageController>(
                   builder: (context, value, child) {
                 return Text(
@@ -98,12 +114,28 @@ class insulinDosePage extends StatelessWidget {
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 );
               }),
-              ElevatedButton(
-                  onPressed: () {
-                    // insulindosepagecontroller.validation();
-                    insulindosepagecontroller.calculateicr();
-                  },
-                  child: Text('Calculate ICR(Insulin to Carb Ratio)')),
+              SizedBox(
+                height: 10,
+              ),
+              SizedBox(
+                width: 300,
+                height: 45,
+                child: ElevatedButton(
+                    onPressed: () {
+                      // insulindosepagecontroller.validation();
+                      insulindosepagecontroller.calculateicr();
+                    },
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30.0),
+                      ),
+                    ),
+                    child: Text('Calculate ICR(Insulin to Carb Ratio)',
+                        style: TextStyle(fontSize: 15))),
+              ),
+              SizedBox(
+                height: 10,
+              ),
               Consumer<insulinDosePageController>(
                   builder: (context, value, child) {
                 return Text(
@@ -111,23 +143,36 @@ class insulinDosePage extends StatelessWidget {
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 );
               }),
-              ElevatedButton(
-                  onPressed: () {
-                    if (insulindosepagecontroller.isf.toString() != "0.0" &&
-                        insulindosepagecontroller.icr.toString() != "0.0") {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => mealDoseCalculationPage(),
-                          ));
-                      print("${insulindosepagecontroller.isf.toString()}");
-                      print("${insulindosepagecontroller.icr.toString()}");
-                    } else {
-                      CustomToast(
-                          message: 'Please first calculate your ISF & ICR');
-                    }
-                  },
-                  child: Text('Meal & Correction Dose Calculation')),
+              SizedBox(
+                height: 10,
+              ),
+              SizedBox(
+                width: 300,
+                height: 45,
+                child: ElevatedButton(
+                    onPressed: () {
+                      if (insulindosepagecontroller.isf.toString() != "0.0" &&
+                          insulindosepagecontroller.icr.toString() != "0.0") {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => mealDoseCalculationPage(),
+                            ));
+                        print("${insulindosepagecontroller.isf.toString()}");
+                        print("${insulindosepagecontroller.icr.toString()}");
+                      } else {
+                        CustomToast(
+                            message: 'Please first calculate your ISF & ICR');
+                      }
+                    },
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30.0),
+                      ),
+                    ),
+                    child: Text('Meal & Correction Dose Calculation',
+                        style: TextStyle(fontSize: 15))),
+              ),
             ],
           ),
         ),

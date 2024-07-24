@@ -80,15 +80,25 @@ class mealDoseCalculationPage extends StatelessWidget {
               SizedBox(
                 height: 15,
               ),
-              ElevatedButton(
-                  onPressed: () {
-                    mealdosecalculationpagecontroller
-                        .correctiondosecalculation();
-                    mealdosecalculationpagecontroller.mealdosecalculation();
-                    mealdosecalculationpagecontroller
-                        .mealcorrectiondosecalculation();
-                  },
-                  child: Text('Calculate Dose')),
+              SizedBox(
+                height: 45,
+                width: 250,
+                child: ElevatedButton(
+                    onPressed: () {
+                      mealdosecalculationpagecontroller
+                          .correctiondosecalculation();
+                      mealdosecalculationpagecontroller.mealdosecalculation();
+                      mealdosecalculationpagecontroller
+                          .mealcorrectiondosecalculation();
+                    },
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30.0),
+                      ),
+                    ),
+                    child:
+                        Text('Calculate Dose', style: TextStyle(fontSize: 17))),
+              ),
               SizedBox(
                 height: 15,
               ),

@@ -160,7 +160,7 @@ class _dailyGraphState extends State<dailyGraph> {
                                 lineBarsData: [
                                   LineChartBarData(
                                     spots: _dataPoints,
-                                    isCurved: false,
+                                    isCurved: true,
                                     colors: [Colors.blue],
                                     barWidth: 2,
                                     belowBarData: BarAreaData(

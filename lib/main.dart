@@ -1,5 +1,6 @@
 import 'package:background_fetch/background_fetch.dart';
 import 'package:diabetes_care_taker/COMPONENTS_PAGES/medicationReminderPage.dart';
+import 'package:diabetes_care_taker/COMPONENTS_PAGES/testReminderPage.dart';
 import 'package:diabetes_care_taker/CONTROLLER_PAGE/insulinDosePageController.dart';
 import 'package:diabetes_care_taker/CONTROLLER_PAGE/mealDoseCalulationPageController.dart';
 import 'package:diabetes_care_taker/PAGES/homePage.dart';
@@ -63,12 +64,12 @@ class _MyAppState extends State<MyApp> {
         debugShowCheckedModeBanner: false,
         title: 'Diabetes Care Taker',
         theme: ThemeData(
-          textTheme: TextTheme(
-            bodyLarge: TextStyle(fontSize: 30, fontWeight: FontWeight.w900),
-            bodyMedium: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            bodySmall: TextStyle(
-                fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black),
-          ),
+          // textTheme: TextTheme(
+          //   bodyLarge: TextStyle(fontSize: 30, fontWeight: FontWeight.w900),
+          //   bodyMedium: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          //   bodySmall: TextStyle(
+          //       fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black),
+          // ),
           colorScheme: ColorScheme.fromSeed(
             seedColor: Color.fromARGB(255, 5, 65, 114),
           ),

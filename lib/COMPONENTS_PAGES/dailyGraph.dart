@@ -91,7 +91,7 @@ class _dailyGraphState extends State<dailyGraph> {
       context: context,
       initialDate: _selectedDate,
       firstDate: DateTime(2000),
-      lastDate: DateTime(2101),
+      lastDate: DateTime.now(),
     );
     if (picked != null && picked != _selectedDate) {
       setState(() {
@@ -125,53 +125,62 @@ class _dailyGraphState extends State<dailyGraph> {
               ],
             ),
             SizedBox(
-              height: 25,
+              height: 120,
             ),
-            Expanded(
-              child: _isLoading
-                  ? Center(child: CircularProgressIndicator())
-                  : _errorMessage.isNotEmpty
-                      ? Center(child: Text(_errorMessage))
-                      : _noData
-                          ? Center(
-                              child: Text(
-                                  'No blood glucose readings were entered to show'))
-                          : LineChart(
-                              LineChartData(
-                                gridData: FlGridData(show: true),
-                                titlesData: FlTitlesData(
-                                  bottomTitles: _getBottomTitles(),
-                                  leftTitles: _getLeftTitles(),
-                                  rightTitles: SideTitles(showTitles: false),
-                                  topTitles: SideTitles(showTitles: false),
-                                ),
-                                borderData: FlBorderData(
-                                  show: true,
-                                  border: Border(
-                                    right:
-                                        BorderSide(color: Colors.transparent),
-                                    top: BorderSide(color: Colors.transparent),
+            Padding(
+              padding: const EdgeInsets.only(right: 10),
+              child: SizedBox(
+                height: 400,
+                child: _isLoading
+                    ? Center(child: CircularProgressIndicator())
+                    : _errorMessage.isNotEmpty
+                        ? Center(child: Text(_errorMessage))
+                        : _noData
+                            ? Center(
+                                child: Text(
+                                    'No blood glucose readings were entered to show'))
+                            : LineChart(
+                                LineChartData(
+                                  gridData: FlGridData(show: true),
+                                  titlesData: FlTitlesData(
+                                    bottomTitles: _getBottomTitles(),
+                                    leftTitles: _getLeftTitles(),
+                                    rightTitles: SideTitles(showTitles: false),
+                                    topTitles: SideTitles(showTitles: false),
                                   ),
-                                ),
-                                minX: 0,
-                                maxX: 1,
-                                minY: 0,
-                                maxY: 400,
-                                lineBarsData: [
-                                  LineChartBarData(
-                                    spots: _dataPoints,
-                                    isCurved: true,
-                                    colors: [Colors.blue],
-                                    barWidth: 2,
-                                    belowBarData: BarAreaData(
-                                        show: false,
-                                        colors: [Colors.blue.withOpacity(0.1)]),
-                                    dotData: FlDotData(show: true),
-                                    dashArray: [5, 5],
+                                  borderData: FlBorderData(
+                                    show: true,
+                                    border: Border(
+                                      right:
+                                          BorderSide(color: Colors.transparent),
+                                      top:
+                                          BorderSide(color: Colors.transparent),
+                                      left: BorderSide(color: Colors.black),
+                                      bottom: BorderSide(color: Colors.black),
+                                    ),
                                   ),
-                                ],
+                                  minX: 0,
+                                  maxX: 1,
+                                  minY: 0,
+                                  maxY: 400,
+                                  lineBarsData: [
+                                    LineChartBarData(
+                                      spots: _dataPoints,
+                                      isCurved: true,
+                                      colors: [Colors.blue],
+                                      barWidth: 3,
+                                      belowBarData: BarAreaData(
+                                          show: false,
+                                          colors: [
+                                            Colors.blue.withOpacity(0.1)
+                                          ]),
+                                      dotData: FlDotData(show: true),
+                                      dashArray: [5, 5],
+                                    ),
+                                  ],
+                                ),
                               ),
-                            ),
+              ),
             ),
           ],
         ),

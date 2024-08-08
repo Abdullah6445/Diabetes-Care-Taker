@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:diabetes_care_taker/PAGES/customToastPage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +7,7 @@ import 'package:flutter/widgets.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:diabetes_care_taker/COMPONENTS_PAGES/displayBloodGlucoseLevels.dart';
 import 'package:diabetes_care_taker/PAGES/customTextFormFieldPage.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class bloodGlucoseMonitoring extends StatefulWidget {
   const bloodGlucoseMonitoring({super.key});
@@ -48,7 +50,7 @@ class _bloodGlucoseMonitoringState extends State<bloodGlucoseMonitoring> {
               ),
               Text(
                 'Blood Glucose Monitoring',
-                style: TextStyle(fontSize: 22),
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
               ),
               SizedBox(
                 height: 15,
@@ -76,6 +78,7 @@ class _bloodGlucoseMonitoringState extends State<bloodGlucoseMonitoring> {
                 controllerr: bglevelController,
                 labelTextt: "Enter your Blood Sugar Level",
                 hintTextt: "Enter your Blood Sugar Level",
+                prefixIconn: Icon(Icons.bloodtype),
                 keyboardType: TextInputType.number,
                 validatorrr: (value) {
                   if (value == null || value.isEmpty) {
@@ -172,6 +175,7 @@ class _bloodGlucoseMonitoringState extends State<bloodGlucoseMonitoring> {
                 controllerr: carbsController,
                 labelTextt: "Enter Carbs Intake",
                 hintTextt: "Enter Carbs Intake",
+                prefixIconn: Icon(Icons.food_bank),
                 keyboardType: TextInputType.number,
               ),
               // TextFormField(
@@ -187,6 +191,7 @@ class _bloodGlucoseMonitoringState extends State<bloodGlucoseMonitoring> {
                 controllerr: bolusInsulinController,
                 labelTextt: "Enter Bolus Insulin Units Injected",
                 hintTextt: "Enter Bolus Insulin Units Injected",
+                prefixIconn: Icon(FontAwesomeIcons.syringe),
                 keyboardType: TextInputType.number,
               ),
               // TextFormField(
@@ -202,6 +207,7 @@ class _bloodGlucoseMonitoringState extends State<bloodGlucoseMonitoring> {
                 controllerr: basalInsulinController,
                 labelTextt: "Enter Basal Insulin Units Injected",
                 hintTextt: "Enter Basal Insulin Units Injected",
+                prefixIconn: Icon(FontAwesomeIcons.syringe),
                 keyboardType: TextInputType.number,
               ),
               // TextFormField(
@@ -217,6 +223,7 @@ class _bloodGlucoseMonitoringState extends State<bloodGlucoseMonitoring> {
                 labelTextt: "Enter Your Note Here",
                 hintTextt: "Enter Your Note Here",
                 keyboardType: TextInputType.text,
+                prefixIconn: Icon(FontAwesomeIcons.noteSticky),
               ),
               SizedBox(
                 height: 15,
@@ -243,12 +250,12 @@ class _bloodGlucoseMonitoringState extends State<bloodGlucoseMonitoring> {
                         'Basal Insulin Intake': basalInsulinController.text,
                         'Notes': noteController.text,
                       }).then((value) {
-                        Fluttertoast.showToast(msg: 'BG Level Added');
+                        CustomToast(message: 'BG Level Added');
                         setState(() {
                           loading = false;
                         });
                       }).catchError((error) {
-                        Fluttertoast.showToast(msg: 'Error Occured');
+                        CustomToast(message: 'Error Occured, please add again');
                         setState(() {
                           loading = false;
                         });

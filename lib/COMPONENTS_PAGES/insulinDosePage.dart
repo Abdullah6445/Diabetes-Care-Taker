@@ -2,6 +2,7 @@
 
 import 'package:diabetes_care_taker/COMPONENTS_PAGES/mealDoseCalulationPage.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:provider/provider.dart';
 import 'package:diabetes_care_taker/CONTROLLER_PAGE/insulinDosePageController.dart';
@@ -33,9 +34,7 @@ class insulinDosePage extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 25),
                 child: Text(
                   'Insulin Dose Calculation',
-                  style: TextStyle(
-                    fontSize: 22,
-                  ),
+                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                 ),
               ),
               SizedBox(
@@ -72,7 +71,8 @@ class insulinDosePage extends StatelessWidget {
                 controllerr: insulindosepagecontroller.bolusInsulin,
                 labelTextt: "Enter Your Total Bolus Insulin Dose",
                 hintTextt: "Short/Rapid Acting Insulin",
-                prefixIconn: Icon(Icons.medical_services),
+                prefixIconn: Icon(FontAwesomeIcons.syringe,
+                    color: Color.fromARGB(255, 5, 65, 114)),
                 keyboardType: TextInputType.number,
               ),
               customTextFormField(
@@ -82,7 +82,8 @@ class insulinDosePage extends StatelessWidget {
                 controllerr: insulindosepagecontroller.basalInsulin,
                 labelTextt: "Enter Your Total Basal Insulin Dose",
                 hintTextt: "Long Acting Insulin",
-                prefixIconn: Icon(Icons.medical_services),
+                prefixIconn: Icon(FontAwesomeIcons.syringe,
+                    color: Color.fromARGB(255, 5, 65, 114)),
                 keyboardType: TextInputType.number,
               ),
               SizedBox(

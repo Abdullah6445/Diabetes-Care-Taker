@@ -88,7 +88,13 @@ flutter:
     - assets/images/Login_Icon_1.png
     - assets/images/Login_Icon_2.png
     - assets/images/Signup_Icon.png
-  #   - images/a_dot_ham.jpeg
+    - assets/images/exercise2.jpg
+    - assets/images/exercise1.jpg
+    - assets/images/reset-password.png
+    - assets/images/dtc_logo_horizontal.png
+    - assets/images/dtc_logo_circular.png
+    - assets/images/white_dtc_logo_horizontal.png
+    - assets/images/white_dtc_logo_circular.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

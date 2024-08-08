@@ -98,7 +98,7 @@ class _monthlyGraphState extends State<monthlyGraph> {
       context: context,
       initialDate: _selectedDate,
       firstDate: DateTime(2000),
-      lastDate: DateTime(2101),
+      lastDate: DateTime.now(),
     );
     if (picked != null && picked != _selectedDate) {
       setState(() {
@@ -134,8 +134,9 @@ class _monthlyGraphState extends State<monthlyGraph> {
                 ),
               ],
             ),
-            SizedBox(height: 25),
-            Expanded(
+            SizedBox(height: 120),
+            SizedBox(
+              height: 400,
               child: _isLoading
                   ? Center(child: CircularProgressIndicator())
                   : _errorMessage.isNotEmpty
@@ -160,10 +161,8 @@ class _monthlyGraphState extends State<monthlyGraph> {
                                     borderData: FlBorderData(
                                       show: true,
                                       border: Border(
-                                        bottom: BorderSide(
-                                            color: Colors.transparent),
-                                        left: BorderSide(
-                                            color: Colors.transparent),
+                                        bottom: BorderSide(color: Colors.black),
+                                        left: BorderSide(color: Colors.black),
                                         right: BorderSide(
                                             color: Colors.transparent),
                                         top: BorderSide(
@@ -183,7 +182,7 @@ class _monthlyGraphState extends State<monthlyGraph> {
                                         spots: _dataPoints,
                                         isCurved: true,
                                         colors: [Colors.blue],
-                                        barWidth: 2,
+                                        barWidth: 3,
                                         belowBarData: BarAreaData(
                                             show: false,
                                             colors: [

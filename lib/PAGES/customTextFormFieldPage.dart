@@ -58,7 +58,7 @@ class customTextFormField extends StatelessWidget {
   final String? hintTextt;
   final String? labelTextt;
   final Icon? prefixIconn;
-  final Icon? suffixIconn;
+  final Widget? suffixIconn;
   final Color? iconColors;
   final TextEditingController? controllerr;
   final TextInputType? keyboardType;

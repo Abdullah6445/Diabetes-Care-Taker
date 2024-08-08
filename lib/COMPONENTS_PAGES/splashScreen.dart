@@ -5,26 +5,10 @@ class splashScreen extends StatefulWidget {
   _splashScreenState createState() => _splashScreenState();
 }
 
-class _splashScreenState extends State<splashScreen>
-    with SingleTickerProviderStateMixin {
-  AnimationController? _controller;
-  Animation<double>? _animation;
-
+class _splashScreenState extends State<splashScreen> {
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(
-      duration: Duration(seconds: 3),
-      vsync: this,
-    );
-
-    _animation = CurvedAnimation(
-      parent: _controller!,
-      curve: Curves.easeIn,
-    );
-
-    _controller!.forward();
-
     _navigateToLogin();
   }
 
@@ -35,31 +19,24 @@ class _splashScreenState extends State<splashScreen>
   }
 
   @override
-  void dispose() {
-    _controller?.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            FadeTransition(
-              opacity: _animation!,
-              child: CircleAvatar(
-                radius: 70,
-                backgroundImage: AssetImage('assets/images/App_logo.jpg'),
-              ),
+            Image.asset(
+              'assets/images/dtc_logo_circular.png',
+              // height: 170,
+              // width: 170,
+              scale: 1,
             ),
             SizedBox(
               height: 35,
             ),
-            FadeTransition(
-              opacity: _animation!,
-              child: Text('Welcome Back to Diabetes Care Taker'),
+            Text(
+              'Welcome to Diabetes Care Taker',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
           ],
         ),

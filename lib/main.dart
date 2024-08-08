@@ -74,11 +74,11 @@ class _MyAppState extends State<MyApp> {
         title: 'Diabetes Care Taker',
         theme: ThemeData(
           textTheme: TextTheme(
-            bodyLarge: TextStyle(fontSize: 30, fontWeight: FontWeight.w900),
-            bodyMedium: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            bodySmall: TextStyle(
-                fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black),
-          ),
+              // bodyLarge: TextStyle(fontSize: 30, fontWeight: FontWeight.w900),
+              // bodyMedium: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              // bodySmall: TextStyle(
+              //     fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black),
+              ),
           colorScheme: ColorScheme.fromSeed(
             seedColor: Color.fromARGB(255, 5, 65, 114),
           ),

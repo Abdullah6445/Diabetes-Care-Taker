@@ -37,9 +37,7 @@ class mealDoseCalculationPage extends StatelessWidget {
               ),
               Text(
                 'Meal & Correction Dose Calculation',
-                style: TextStyle(
-                  fontSize: 22,
-                ),
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               SizedBox(
                 height: 25,

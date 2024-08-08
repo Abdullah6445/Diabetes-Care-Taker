@@ -1,29 +1,104 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:diabetes_care_taker/COMPONENTS_PAGES/model/educationLibraryPage.dart';
 import 'package:diabetes_care_taker/COMPONENTS_PAGES/emergencyAlertPage.dart';
 import 'package:diabetes_care_taker/COMPONENTS_PAGES/exerciseTrackingPage.dart';
 import 'package:diabetes_care_taker/COMPONENTS_PAGES/testReminderPage.dart';
+import 'package:diabetes_care_taker/PAGES/customToastPage.dart';
 import 'package:diabetes_care_taker/connection/ConnectionClass.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
-class drawerPage extends StatelessWidget {
+class drawerPage extends StatefulWidget {
   drawerPage({super.key});
+
+  @override
+  State<drawerPage> createState() => _drawerPageState();
+}
+
+class _drawerPageState extends State<drawerPage> {
   final _auth = FirebaseAuth.instance;
+
+  String userName = '';
+
+  @override
+  void initState() {
+    super.initState();
+    fetchUserName();
+  }
+
+  Future<void> fetchUserName() async {
+    try {
+      User? user = FirebaseAuth.instance.currentUser;
+      if (user != null) {
+        String uid = user.uid;
+        DocumentSnapshot userDoc = await FirebaseFirestore.instance
+            .collection('users')
+            .doc(uid)
+            .collection('about_user')
+            .doc(uid)
+            .get();
+
+        if (userDoc.exists) {
+          setState(() {
+            userName = userDoc['name'];
+          });
+          print('User Name.......:$userName');
+        }
+      }
+    } catch (e) {
+      CustomToast(message: 'Error occured while fetching user name: $e');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
     return Drawer(
       child: Column(
         children: [
-          UserAccountsDrawerHeader(
-            accountName: Text(
-              "Diabetes care taker",
+          Container(
+            height: 200,
+            width: 320,
+            child: DrawerHeader(
+              decoration: BoxDecoration(
+                color: colorScheme.primary,
+              ),
+              padding: EdgeInsets.all(0),
+              child: Column(
+                children: [
+                  SizedBox(
+                    width: 20,
+                    height: 20,
+                  ),
+                  Image.asset(
+                    'assets/images/white_dtc_logo_horizontal.png',
+                    scale: 3,
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    userName.isEmpty ? '' : 'Welcome, $userName',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                    ),
+                  ),
+                ],
+              ),
             ),
-            accountEmail: Text("diabetescaretaker@gmail.com"),
           ),
+          // UserAccountsDrawerHeader(
+          //   accountName: Text(
+          //     "Diabetes care taker",
+          //   ),
+          //   accountEmail: Text("diabetescaretaker@gmail.com"),
+          // ),
           ListTile(
             horizontalTitleGap: 0,
             onTap: () {
@@ -41,7 +116,7 @@ class drawerPage extends StatelessWidget {
                 size: MediaQuery.of(context).size.height * .033),
             title: Text(
               "Diabetes Education library",
-              style: Theme.of(context).textTheme.bodyMedium,
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
           ),
           ListTile(
@@ -50,7 +125,7 @@ class drawerPage extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => exerciseTrackingPage(),
+                    builder: (context) => exerciseLogScreen(),
                   ));
             },
             leading: Icon(
@@ -60,7 +135,7 @@ class drawerPage extends StatelessWidget {
             ),
             title: Text(
               "Exercise Tracking",
-              style: Theme.of(context).textTheme.bodyMedium,
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
           ),
           ListTile(
@@ -78,8 +153,8 @@ class drawerPage extends StatelessWidget {
               size: MediaQuery.of(context).size.height * .033,
             ),
             title: Text(
-              "Diabetes Related Test Reminders",
-              style: Theme.of(context).textTheme.bodyMedium,
+              "Diabetes Related Tests",
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
           ),
           ListTile(
@@ -101,7 +176,7 @@ class drawerPage extends StatelessWidget {
             ),
             title: Text(
               "Emergency Alert",
-              style: Theme.of(context).textTheme.bodyMedium,
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
           ),
           Divider(
@@ -120,9 +195,7 @@ class drawerPage extends StatelessWidget {
             ),
             title: Text(
               "Logout",
-              style: Theme.of(context)
-                  .textTheme
-                  .bodyMedium
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)
                   ?.copyWith(color: Colors.redAccent),
             ),
           ),

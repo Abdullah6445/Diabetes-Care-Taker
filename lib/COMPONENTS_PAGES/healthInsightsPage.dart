@@ -192,7 +192,7 @@ class _healthIsightsPageState extends State<healthIsightsPage> {
               ),
               Text(
                 'Health Insights & Trends',
-                style: TextStyle(fontSize: 22),
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
               ),
               SizedBox(
                 height: 30,

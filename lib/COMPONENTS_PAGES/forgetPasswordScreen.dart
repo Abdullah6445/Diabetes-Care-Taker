@@ -2,8 +2,6 @@ import 'package:diabetes_care_taker/COMPONENTS_PAGES/loginScreen.dart';
 import 'package:diabetes_care_taker/PAGES/customToastPage.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:get/get.dart';
 
 class forgetPasswordScreen extends StatelessWidget {
   final _auth = FirebaseAuth.instance;
@@ -24,12 +22,6 @@ class forgetPasswordScreen extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                // CircleAvatar(
-                //   radius: 80,
-                //   backgroundColor: Colors.white,
-                //   backgroundImage:
-                //       AssetImage('assets/images/reset-password.png'),
-                // ),
                 SizedBox(
                   height: 130,
                 ),

@@ -27,8 +27,6 @@ class _splashScreenState extends State<splashScreen> {
           children: [
             Image.asset(
               'assets/images/dtc_logo_circular.png',
-              // height: 170,
-              // width: 170,
               scale: 1,
             ),
             SizedBox(

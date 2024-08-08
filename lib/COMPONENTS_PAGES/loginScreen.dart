@@ -2,7 +2,6 @@ import 'package:diabetes_care_taker/COMPONENTS_PAGES/forgetPasswordScreen.dart';
 import 'package:diabetes_care_taker/PAGES/customToastPage.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:diabetes_care_taker/PAGES/customTextFormFieldPage.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 
@@ -28,11 +27,6 @@ class _loginScreenState extends State<loginScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(height: 100),
-              // CircleAvatar(
-              //   radius: 70,
-              //   backgroundColor: Colors.white,
-              //   backgroundImage: AssetImage('assets/images/Login_Icon_2.png'),
-              // ),
               Image.asset(
                 'assets/images/Login_Icon_2.png',
                 scale: 4,
@@ -57,18 +51,6 @@ class _loginScreenState extends State<loginScreen> {
                 prefixIconn: Icon(Icons.email),
                 keyboardType: TextInputType.emailAddress,
               ),
-
-              // TextFormField(
-              //   controller: emailController,
-              //   decoration: InputDecoration(labelText: 'Email'),
-              //   validator: (value) {
-              //     if (value == null || value.isEmpty) {
-              //       return 'Please enter your email';
-              //     }
-              //     return null;
-              //   },
-              // ),
-
               customTextFormField(
                 validatorrr: MultiValidator([
                   RequiredValidator(errorText: "Please Enter Your Password"),
@@ -90,18 +72,6 @@ class _loginScreenState extends State<loginScreen> {
                   },
                 ),
               ),
-
-              // TextFormField(
-              //   controller: passwordController,
-              //   decoration: InputDecoration(labelText: 'Password'),
-              //   obscureText: true,
-              //   validator: (value) {
-              //     if (value == null || value.isEmpty) {
-              //       return 'Please enter your password';
-              //     }
-              //     return null;
-              //   },
-              // ),
               SizedBox(
                 height: 20,
               ),
@@ -126,10 +96,6 @@ class _loginScreenState extends State<loginScreen> {
                         } else {
                           CustomToast(message: 'Please register your account');
                         }
-                        // Fluttertoast.showToast(msg: 'Login successful');
-                        // print('Navigating to home screen');
-                        // Navigator.pushReplacementNamed(context, '/home');
-                        // print('Navigation executed');
                       } catch (e) {
                         CustomToast(
                             message: 'Please Enter Correct Email and Password');

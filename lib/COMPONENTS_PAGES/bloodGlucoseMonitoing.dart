@@ -1,10 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:diabetes_care_taker/PAGES/customToastPage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:diabetes_care_taker/COMPONENTS_PAGES/displayBloodGlucoseLevels.dart';
 import 'package:diabetes_care_taker/PAGES/customTextFormFieldPage.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -55,25 +52,6 @@ class _bloodGlucoseMonitoringState extends State<bloodGlucoseMonitoring> {
               SizedBox(
                 height: 15,
               ),
-              // TextFormField(
-              //   keyboardType: TextInputType.number,
-              //   controller: bglevelController,
-              //   decoration: InputDecoration(
-              //     hintText: 'Enter your Blood Sugar Level',
-              //     labelText: 'Enter your Blood Sugar Level',
-              //     border: OutlineInputBorder(),
-              //   ),
-              //   validator: (value) {
-              //     if (value == null || value.isEmpty) {
-              //       return 'Please Enter Your Blood Glucose Reading';
-              //     } else if (value.length < 2) {
-              //       return 'Your Blood Glucose Reading must be in two digits';
-              //     } else if (value.length > 3) {
-              //       return 'Please Check Your Blood Glucose Reading Again';
-              //     }
-              //     return null;
-              //   },
-              // ),
               customTextFormField(
                 controllerr: bglevelController,
                 labelTextt: "Enter your Blood Sugar Level",
@@ -91,40 +69,6 @@ class _bloodGlucoseMonitoringState extends State<bloodGlucoseMonitoring> {
                   return null;
                 },
               ),
-
-              // Row(
-              //   children: [
-              //     Expanded(
-              //       child: TextField(
-              //         controller: dateController,
-              //         decoration: InputDecoration(
-              //           labelText: "Select Date",
-              //           hintText: "Select Date",
-              //           filled: true,
-              //           prefixIcon: Icon(Icons.calendar_today),
-              //           border: OutlineInputBorder(),
-              //         ),
-              //         readOnly: true,
-              //         onTap: _selectDate,
-              //       ),
-              //     ),
-              //     SizedBox(width: 10),
-              //     Expanded(
-              //       child: TextField(
-              //         controller: timeController,
-              //         decoration: InputDecoration(
-              //           labelText: "Select Time",
-              //           hintText: "Select Time",
-              //           filled: true,
-              //           prefixIcon: Icon(Icons.access_time),
-              //           border: OutlineInputBorder(),
-              //         ),
-              //         readOnly: true,
-              //         onTap: _selectTime,
-              //       ),
-              //     ),
-              //   ],
-              // ),
               Row(
                 children: [
                   Expanded(
@@ -161,16 +105,6 @@ class _bloodGlucoseMonitoringState extends State<bloodGlucoseMonitoring> {
                   ),
                 ],
               ),
-
-              // TextFormField(
-              //   keyboardType: TextInputType.number,
-              //   controller: carbsController,
-              //   decoration: InputDecoration(
-              //     hintText: 'Enter Carb Intake',
-              //     labelText: 'Enter Carb Intake',
-              //     border: OutlineInputBorder(),
-              //   ),
-              // ),
               customTextFormField(
                 controllerr: carbsController,
                 labelTextt: "Enter Carbs Intake",
@@ -178,15 +112,6 @@ class _bloodGlucoseMonitoringState extends State<bloodGlucoseMonitoring> {
                 prefixIconn: Icon(Icons.food_bank),
                 keyboardType: TextInputType.number,
               ),
-              // TextFormField(
-              //   keyboardType: TextInputType.number,
-              //   controller: bolusInsulinController,
-              //   decoration: InputDecoration(
-              //     hintText: 'Enter Bolus Insulin Units Injected',
-              //     labelText: 'Enter Bolus Insulin Units Injected',
-              //     border: OutlineInputBorder(),
-              //   ),
-              // ),
               customTextFormField(
                 controllerr: bolusInsulinController,
                 labelTextt: "Enter Bolus Insulin Units Injected",
@@ -194,15 +119,6 @@ class _bloodGlucoseMonitoringState extends State<bloodGlucoseMonitoring> {
                 prefixIconn: Icon(FontAwesomeIcons.syringe),
                 keyboardType: TextInputType.number,
               ),
-              // TextFormField(
-              //   keyboardType: TextInputType.number,
-              //   controller: basalInsulinController,
-              //   decoration: InputDecoration(
-              //     hintText: 'Enter Basal Insulin Units Injected',
-              //     labelText: 'Enter Basal Insulin Units Injected',
-              //     border: OutlineInputBorder(),
-              //   ),
-              // ),
               customTextFormField(
                 controllerr: basalInsulinController,
                 labelTextt: "Enter Basal Insulin Units Injected",
@@ -210,14 +126,6 @@ class _bloodGlucoseMonitoringState extends State<bloodGlucoseMonitoring> {
                 prefixIconn: Icon(FontAwesomeIcons.syringe),
                 keyboardType: TextInputType.number,
               ),
-              // TextFormField(
-              //   controller: noteController,
-              //   decoration: InputDecoration(
-              //     hintText: 'Enter Notes Here',
-              //     labelText: 'Enter Notes Here',
-              //     border: OutlineInputBorder(),
-              //   ),
-              // ),
               customTextFormField(
                 controllerr: noteController,
                 labelTextt: "Enter Your Note Here",
@@ -251,6 +159,13 @@ class _bloodGlucoseMonitoringState extends State<bloodGlucoseMonitoring> {
                         'Notes': noteController.text,
                       }).then((value) {
                         CustomToast(message: 'BG Level Added');
+                        bglevelController.clear();
+                        dateController.clear();
+                        timeController.clear();
+                        carbsController.clear();
+                        bolusInsulinController.clear();
+                        basalInsulinController.clear();
+                        noteController.clear();
                         setState(() {
                           loading = false;
                         });
@@ -313,7 +228,7 @@ class _bloodGlucoseMonitoringState extends State<bloodGlucoseMonitoring> {
       context: context,
       initialDate: DateTime.now(),
       firstDate: DateTime(2000),
-      lastDate: DateTime(2101),
+      lastDate: DateTime.now(),
     );
     if (pickedDate != null) {
       setState(() {

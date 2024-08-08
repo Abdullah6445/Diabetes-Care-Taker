@@ -2,9 +2,7 @@ import 'package:diabetes_care_taker/PAGES/customToastPage.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:diabetes_care_taker/PAGES/customTextFormFieldPage.dart';
-// import 'package:dropdown_button2/dropdown_button2.dart';
 
 class signupScreen extends StatefulWidget {
   @override
@@ -33,11 +31,6 @@ class _signupScreenState extends State<signupScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // CircleAvatar(
-              //   radius: 70,
-              //   backgroundColor: Colors.white70,
-              //   backgroundImage: AssetImage('assets/images/Signup_Icon.png'),
-              // ),
               SizedBox(height: 90),
               Image.asset(
                 'assets/images/Signup_Icon.png',
@@ -46,16 +39,6 @@ class _signupScreenState extends State<signupScreen> {
               SizedBox(
                 height: 35,
               ),
-              // TextFormField(
-              //   controller: nameController,
-              //   decoration: InputDecoration(labelText: 'Name'),
-              //   validator: (value) {
-              //     if (value == null || value.isEmpty) {
-              //       return 'Please enter your name';
-              //     }
-              //     return null;
-              //   },
-              // ),
               customTextFormField(
                 validatorrr: (value) {
                   if (value!.isEmpty) {
@@ -69,17 +52,6 @@ class _signupScreenState extends State<signupScreen> {
                 prefixIconn: Icon(Icons.person),
                 keyboardType: TextInputType.text,
               ),
-
-              // TextFormField(
-              //   controller: emailController,
-              //   decoration: InputDecoration(labelText: 'Email'),
-              //   validator: (value) {
-              //     if (value == null || value.isEmpty) {
-              //       return 'Please enter your email';
-              //     }
-              //     return null;
-              //   },
-              // ),
               customTextFormField(
                 validatorrr: (value) {
                   if (value!.isEmpty) {
@@ -93,23 +65,11 @@ class _signupScreenState extends State<signupScreen> {
                 prefixIconn: Icon(Icons.email),
                 keyboardType: TextInputType.emailAddress,
               ),
-
-              // TextFormField(
-              //   controller: passwordController,
-              //   decoration: InputDecoration(labelText: 'Password'),
-              //   obscureText: true,
-              //   validator: (value) {
-              //     if (value == null || value.isEmpty) {
-              //       return 'Please enter your password';
-              //     }
-              //     return null;
-              //   },
-              // ),
               customTextFormField(
                 validatorrr: (value) {
                   if (value!.isEmpty) {
                     return 'Please enter your password';
-                  } else if (value.length <= 6) {
+                  } else if (value.length < 7) {
                     return 'Password must be at least 6 characters';
                   }
                   return null;
@@ -159,17 +119,6 @@ class _signupScreenState extends State<signupScreen> {
                   },
                 ),
               ),
-
-              // TextFormField(
-              //   controller: diabetesTypeController,
-              //   decoration: InputDecoration(labelText: 'Type of Diabetes'),
-              //   validator: (value) {
-              //     if (value == null || value.isEmpty) {
-              //       return 'Please enter your type of diabetes';
-              //     }
-              //     return null;
-              //   },
-              // ),
               Padding(
                 padding: const EdgeInsets.only(left: 17, right: 17, top: 5),
                 child: DropdownButtonFormField<String>(

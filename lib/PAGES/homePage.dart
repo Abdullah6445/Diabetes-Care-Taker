@@ -20,14 +20,11 @@ class homePage extends StatelessWidget {
             popupMenuPage(),
           ],
           elevation: 10,
-          // centerTitle: true,
           title: Text(
             "Diabetes Care Taker",
             style: TextStyle(fontWeight: FontWeight.w900),
           ),
           bottom: TabBar(
-            // isScrollable: true,
-            // tabAlignment: TabAlignment.start,
             indicatorColor: Colors.redAccent,
             tabs: [
               Tab(

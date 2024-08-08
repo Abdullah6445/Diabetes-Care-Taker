@@ -6,9 +6,7 @@ import 'package:diabetes_care_taker/COMPONENTS_PAGES/testReminderPage.dart';
 import 'package:diabetes_care_taker/PAGES/customToastPage.dart';
 import 'package:diabetes_care_taker/connection/ConnectionClass.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
@@ -93,23 +91,11 @@ class _drawerPageState extends State<drawerPage> {
               ),
             ),
           ),
-          // UserAccountsDrawerHeader(
-          //   accountName: Text(
-          //     "Diabetes care taker",
-          //   ),
-          //   accountEmail: Text("diabetescaretaker@gmail.com"),
-          // ),
           ListTile(
             horizontalTitleGap: 0,
             onTap: () {
               ConnectionClass()
                   .connection_function_navigator(educationLibraryPage());
-              // Get.to(educationLibraryPage());
-              // Navigator.push(
-              //     context,
-              //     MaterialPageRoute(
-              //       builder: (context) => educationLibraryPage(),
-              //     ));
             },
             leading: Icon(Icons.library_books,
                 color: Colors.black,
@@ -160,14 +146,7 @@ class _drawerPageState extends State<drawerPage> {
           ListTile(
             horizontalTitleGap: 0,
             onTap: () {
-              // ConnectionClass()
-              //     .connection_function_navigator(emergencyAlertPage());
               Get.to(emergencyAlertPage());
-              //   Navigator.push(
-              //       context,
-              //       MaterialPageRoute(
-              //         builder: (context) => emergencyAlertPage(),
-              //       ));
             },
             leading: Icon(
               Icons.bus_alert,

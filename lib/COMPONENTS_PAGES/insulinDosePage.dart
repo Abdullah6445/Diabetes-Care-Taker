@@ -26,7 +26,6 @@ class insulinDosePage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Form(
           key: insulindosepagecontroller.form_key,
-          // autovalidateMode: AutovalidateMode.always,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

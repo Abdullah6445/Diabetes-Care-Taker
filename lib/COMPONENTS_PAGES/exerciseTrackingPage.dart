@@ -4,7 +4,6 @@ import 'package:diabetes_care_taker/PAGES/customToastPage.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:intl/intl.dart';
@@ -125,6 +124,12 @@ class _exerciseLogScreenState extends State<exerciseLogScreen> {
         'Timestamp': FieldValue.serverTimestamp(),
       }).then((value) {
         CustomToast(message: 'Exercise added');
+        _durationController.clear();
+        _bgBeforeController.clear();
+        _bgAfterController.clear();
+        _dateController.clear();
+        _timeController.clear();
+        _selectedExercise = 'Select Exercise';
         setState(() {
           loading = false;
         });

@@ -30,7 +30,7 @@ class _displayBloodGlucoseLevelsState extends State<displayBloodGlucoseLevels> {
             .collection('users')
             .doc(_currentUser?.uid)
             .collection('entries')
-            .orderBy('Date')
+            .orderBy('Date', descending: true)
             .snapshots(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
@@ -43,73 +43,75 @@ class _displayBloodGlucoseLevelsState extends State<displayBloodGlucoseLevels> {
 
           final List<DocumentSnapshot> documents = snapshot.data!.docs;
 
-          return SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: DataTable(
-              columns: [
-                DataColumn(
-                    label: Text(
-                  'Date',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                )),
-                DataColumn(
-                    label: Text('Time',
-                        style: TextStyle(fontWeight: FontWeight.bold))),
-                DataColumn(
-                    label: Text('BGL',
-                        style: TextStyle(fontWeight: FontWeight.bold))),
-                DataColumn(
-                    label: Text('Carb Intake',
-                        style: TextStyle(fontWeight: FontWeight.bold))),
-                DataColumn(
-                    label: Text('Bolus Insulin Intake',
-                        style: TextStyle(fontWeight: FontWeight.bold))),
-                DataColumn(
-                    label: Text('Basal Insulin Intake',
-                        style: TextStyle(fontWeight: FontWeight.bold))),
-                DataColumn(
-                    label: Text('Notes',
-                        style: TextStyle(fontWeight: FontWeight.bold))),
-              ],
-              rows: documents
-                  .map((doc) => DataRow(cells: [
-                        DataCell(Text(
-                          doc['Date'] ?? '',
-                          style: TextStyle(
-                              fontWeight: FontWeight.normal, fontSize: 17),
-                        )),
-                        DataCell(Text(
-                          doc['Time'] ?? '',
-                          style: TextStyle(
-                              fontWeight: FontWeight.normal, fontSize: 17),
-                        )),
-                        DataCell(Text(
-                          doc['Blood Glucose Level'] ?? '',
-                          style: TextStyle(
-                              fontWeight: FontWeight.normal, fontSize: 17),
-                        )),
-                        DataCell(Text(
-                          doc['Carb Intake'] ?? '',
-                          style: TextStyle(
-                              fontWeight: FontWeight.normal, fontSize: 17),
-                        )),
-                        DataCell(Text(
-                          doc['Bolus Insulin Intake'] ?? '',
-                          style: TextStyle(
-                              fontWeight: FontWeight.normal, fontSize: 17),
-                        )),
-                        DataCell(Text(
-                          doc['Basal Insulin Intake'] ?? '',
-                          style: TextStyle(
-                              fontWeight: FontWeight.normal, fontSize: 17),
-                        )),
-                        DataCell(Text(
-                          doc['Notes'] ?? '',
-                          style: TextStyle(
-                              fontWeight: FontWeight.normal, fontSize: 17),
-                        )),
-                      ]))
-                  .toList(),
+          return Container(
+            decoration: BoxDecoration(
+              color: Colors.lightBlueAccent.withOpacity(0.1),
+            ),
+            child: SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: DataTable(
+                  dividerThickness: 2.0,
+                  headingRowColor: MaterialStateProperty.resolveWith<Color?>(
+                    (Set<MaterialState> states) {
+                      return Color.fromARGB(255, 5, 65, 114);
+                    },
+                  ),
+                  headingTextStyle: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 17),
+                  columns: [
+                    DataColumn(label: Text('Date')),
+                    DataColumn(label: Text('Time')),
+                    DataColumn(label: Text('BGL')),
+                    DataColumn(label: Text('Carb Intake')),
+                    DataColumn(label: Text('Bolus Insulin Intake')),
+                    DataColumn(label: Text('Basal Insulin Intake')),
+                    DataColumn(label: Text('Notes')),
+                  ],
+                  rows: documents
+                      .map((doc) => DataRow(cells: [
+                            DataCell(Text(
+                              doc['Date'] ?? '',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.normal, fontSize: 17),
+                            )),
+                            DataCell(Text(
+                              doc['Time'] ?? '',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.normal, fontSize: 17),
+                            )),
+                            DataCell(Text(
+                              doc['Blood Glucose Level'] ?? '',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.normal, fontSize: 17),
+                            )),
+                            DataCell(Text(
+                              doc['Carb Intake'] ?? '',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.normal, fontSize: 17),
+                            )),
+                            DataCell(Text(
+                              doc['Bolus Insulin Intake'] ?? '',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.normal, fontSize: 17),
+                            )),
+                            DataCell(Text(
+                              doc['Basal Insulin Intake'] ?? '',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.normal, fontSize: 17),
+                            )),
+                            DataCell(Text(
+                              doc['Notes'] ?? '',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.normal, fontSize: 17),
+                            )),
+                          ]))
+                      .toList(),
+                ),
+              ),
             ),
           );
         },

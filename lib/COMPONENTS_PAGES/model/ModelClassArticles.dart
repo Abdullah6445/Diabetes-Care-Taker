@@ -1,108 +1,110 @@
-class ModelClass {
-  Header? header;
-  Esearchresult? esearchresult;
+// To parse this JSON data, do
+//
+//     final diabetesModelClass = diabetesModelClassFromJson(jsonString);
 
-  ModelClass({this.header, this.esearchresult});
+import 'dart:convert';
 
-  ModelClass.fromJson(Map<String, dynamic> json) {
-    header =
-        json['header'] != null ? new Header.fromJson(json['header']) : null;
-    esearchresult = json['esearchresult'] != null
-        ? new Esearchresult.fromJson(json['esearchresult'])
-        : null;
-  }
+DiabetesModelClass diabetesModelClassFromJson(String str) =>
+    DiabetesModelClass.fromJson(json.decode(str));
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.header != null) {
-      data['header'] = this.header!.toJson();
-    }
-    if (this.esearchresult != null) {
-      data['esearchresult'] = this.esearchresult!.toJson();
-    }
-    return data;
-  }
-}
+String diabetesModelClassToJson(DiabetesModelClass data) =>
+    json.encode(data.toJson());
 
-class Header {
-  String? type;
-  String? version;
+class DiabetesModelClass {
+  Header header;
+  Esearchresult esearchresult;
 
-  Header({this.type, this.version});
+  DiabetesModelClass({
+    required this.header,
+    required this.esearchresult,
+  });
 
-  Header.fromJson(Map<String, dynamic> json) {
-    type = json['type'];
-    version = json['version'];
-  }
+  factory DiabetesModelClass.fromJson(Map<String, dynamic> json) =>
+      DiabetesModelClass(
+        header: Header.fromJson(json["header"]),
+        esearchresult: Esearchresult.fromJson(json["esearchresult"]),
+      );
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['type'] = this.type;
-    data['version'] = this.version;
-    return data;
-  }
+  Map<String, dynamic> toJson() => {
+        "header": header.toJson(),
+        "esearchresult": esearchresult.toJson(),
+      };
 }
 
 class Esearchresult {
-  String? count;
-  String? retmax;
-  String? retstart;
-  List<String>? idlist;
-  List<Translationset>? translationset;
-  String? querytranslation;
+  String count;
+  String retmax;
+  String retstart;
+  List<String> idlist;
+  List<Translationset> translationset;
+  String querytranslation;
 
-  Esearchresult(
-      {this.count,
-      this.retmax,
-      this.retstart,
-      this.idlist,
-      this.translationset,
-      this.querytranslation});
+  Esearchresult({
+    required this.count,
+    required this.retmax,
+    required this.retstart,
+    required this.idlist,
+    required this.translationset,
+    required this.querytranslation,
+  });
 
-  Esearchresult.fromJson(Map<String, dynamic> json) {
-    count = json['count'];
-    retmax = json['retmax'];
-    retstart = json['retstart'];
-    idlist = json['idlist'].cast<String>();
-    if (json['translationset'] != null) {
-      translationset = <Translationset>[];
-      json['translationset'].forEach((v) {
-        translationset!.add(new Translationset.fromJson(v));
-      });
-    }
-    querytranslation = json['querytranslation'];
-  }
+  factory Esearchresult.fromJson(Map<String, dynamic> json) => Esearchresult(
+        count: json["count"],
+        retmax: json["retmax"],
+        retstart: json["retstart"],
+        idlist: List<String>.from(json["idlist"].map((x) => x)),
+        translationset: List<Translationset>.from(
+            json["translationset"].map((x) => Translationset.fromJson(x))),
+        querytranslation: json["querytranslation"],
+      );
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['count'] = this.count;
-    data['retmax'] = this.retmax;
-    data['retstart'] = this.retstart;
-    data['idlist'] = this.idlist;
-    if (this.translationset != null) {
-      data['translationset'] =
-          this.translationset!.map((v) => v.toJson()).toList();
-    }
-    data['querytranslation'] = this.querytranslation;
-    return data;
-  }
+  Map<String, dynamic> toJson() => {
+        "count": count,
+        "retmax": retmax,
+        "retstart": retstart,
+        "idlist": List<dynamic>.from(idlist.map((x) => x)),
+        "translationset":
+            List<dynamic>.from(translationset.map((x) => x.toJson())),
+        "querytranslation": querytranslation,
+      };
 }
 
 class Translationset {
-  String? from;
-  String? to;
+  String from;
+  String to;
 
-  Translationset({this.from, this.to});
+  Translationset({
+    required this.from,
+    required this.to,
+  });
 
-  Translationset.fromJson(Map<String, dynamic> json) {
-    from = json['from'];
-    to = json['to'];
-  }
+  factory Translationset.fromJson(Map<String, dynamic> json) => Translationset(
+        from: json["from"],
+        to: json["to"],
+      );
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['from'] = this.from;
-    data['to'] = this.to;
-    return data;
-  }
+  Map<String, dynamic> toJson() => {
+        "from": from,
+        "to": to,
+      };
+}
+
+class Header {
+  String type;
+  String version;
+
+  Header({
+    required this.type,
+    required this.version,
+  });
+
+  factory Header.fromJson(Map<String, dynamic> json) => Header(
+        type: json["type"],
+        version: json["version"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "type": type,
+        "version": version,
+      };
 }

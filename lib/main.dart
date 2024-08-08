@@ -1,6 +1,5 @@
 import 'package:background_fetch/background_fetch.dart';
 import 'package:diabetes_care_taker/COMPONENTS_PAGES/medicationReminderPage.dart';
-import 'package:diabetes_care_taker/COMPONENTS_PAGES/testReminderPage.dart';
 import 'package:diabetes_care_taker/CONTROLLER_PAGE/insulinDosePageController.dart';
 import 'package:diabetes_care_taker/CONTROLLER_PAGE/mealDoseCalulationPageController.dart';
 import 'package:diabetes_care_taker/PAGES/homePage.dart';

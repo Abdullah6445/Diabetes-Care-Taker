@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:diabetes_care_taker/PAGES/customToastPage.dart';
+import 'package:diabetes_care_taker/customWidgets/customToastPage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:diabetes_care_taker/COMPONENTS_PAGES/displayBloodGlucoseLevels.dart';
-import 'package:diabetes_care_taker/PAGES/customTextFormFieldPage.dart';
+import 'package:diabetes_care_taker/dashboard/bloodMonitoring/displayBloodGlucoseLevels.dart';
+import 'package:diabetes_care_taker/customWidgets/customTextFormFieldPage.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class bloodGlucoseMonitoring extends StatefulWidget {
@@ -42,24 +42,24 @@ class _bloodGlucoseMonitoringState extends State<bloodGlucoseMonitoring> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
-              Text(
+              const Text(
                 'Blood Glucose Monitoring',
                 style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               customTextFormField(
                 controllerr: bglevelController,
                 labelTextt: "Enter your Blood Sugar Level",
                 hintTextt: "Enter your Blood Sugar Level",
-                prefixIconn: Icon(Icons.bloodtype),
+                prefixIconn: const Icon(Icons.bloodtype),
                 keyboardType: TextInputType.number,
                 validatorrr: (value) {
-                  if (value == null || value.isEmpty) {
+                  if (value == null || value.trimLeft().isEmpty) {
                     return 'Please Enter Your Blood Glucose Reading';
                   } else if (value.length < 2) {
                     return 'Your Blood Glucose Reading must be in two digits';
@@ -76,11 +76,11 @@ class _bloodGlucoseMonitoringState extends State<bloodGlucoseMonitoring> {
                       controllerr: dateController,
                       labelTextt: "Select Date",
                       hintTextt: "Select Date",
-                      prefixIconn: Icon(Icons.calendar_today),
+                      prefixIconn: const Icon(Icons.calendar_today),
                       readOnlyy: true,
                       onTap: _selectDate,
                       validatorrr: (value) {
-                        if (value == null || value.isEmpty) {
+                        if (value == null || value.trimLeft().isEmpty) {
                           return 'Please Select Date';
                         }
                         return null;
@@ -92,11 +92,11 @@ class _bloodGlucoseMonitoringState extends State<bloodGlucoseMonitoring> {
                       controllerr: timeController,
                       labelTextt: "Select Time",
                       hintTextt: "Select Time",
-                      prefixIconn: Icon(Icons.access_time),
+                      prefixIconn: const Icon(Icons.access_time),
                       readOnlyy: true,
                       onTap: _selectTime,
                       validatorrr: (value) {
-                        if (value == null || value.isEmpty) {
+                        if (value == null || value.trimLeft().isEmpty) {
                           return 'Please Select Time';
                         }
                         return null;
@@ -109,21 +109,21 @@ class _bloodGlucoseMonitoringState extends State<bloodGlucoseMonitoring> {
                 controllerr: carbsController,
                 labelTextt: "Enter Carbs Intake",
                 hintTextt: "Enter Carbs Intake",
-                prefixIconn: Icon(Icons.food_bank),
+                prefixIconn: const Icon(Icons.food_bank),
                 keyboardType: TextInputType.number,
               ),
               customTextFormField(
                 controllerr: bolusInsulinController,
                 labelTextt: "Enter Bolus Insulin Units Injected",
                 hintTextt: "Enter Bolus Insulin Units Injected",
-                prefixIconn: Icon(FontAwesomeIcons.syringe),
+                prefixIconn: const Icon(FontAwesomeIcons.syringe),
                 keyboardType: TextInputType.number,
               ),
               customTextFormField(
                 controllerr: basalInsulinController,
                 labelTextt: "Enter Basal Insulin Units Injected",
                 hintTextt: "Enter Basal Insulin Units Injected",
-                prefixIconn: Icon(FontAwesomeIcons.syringe),
+                prefixIconn: const Icon(FontAwesomeIcons.syringe),
                 keyboardType: TextInputType.number,
               ),
               customTextFormField(
@@ -131,9 +131,9 @@ class _bloodGlucoseMonitoringState extends State<bloodGlucoseMonitoring> {
                 labelTextt: "Enter Your Note Here",
                 hintTextt: "Enter Your Note Here",
                 keyboardType: TextInputType.text,
-                prefixIconn: Icon(FontAwesomeIcons.noteSticky),
+                prefixIconn: const Icon(FontAwesomeIcons.noteSticky),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               SizedBox(
@@ -183,14 +183,14 @@ class _bloodGlucoseMonitoringState extends State<bloodGlucoseMonitoring> {
                     ),
                   ),
                   child: loading
-                      ? CircularProgressIndicator(color: Colors.white)
-                      : Text(
+                      ? const CircularProgressIndicator(color: Colors.white)
+                      : const Text(
                           'Add BG Readings',
                           style: TextStyle(fontSize: 17),
                         ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               SizedBox(
@@ -210,7 +210,7 @@ class _bloodGlucoseMonitoringState extends State<bloodGlucoseMonitoring> {
                       borderRadius: BorderRadius.circular(30.0),
                     ),
                   ),
-                  child: Text(
+                  child: const Text(
                     'Display BG Readings',
                     style: TextStyle(fontSize: 17),
                   ),

@@ -1,4 +1,4 @@
-import 'package:diabetes_care_taker/PAGES/customToastPage.dart';
+import 'package:diabetes_care_taker/customWidgets/customToastPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -87,7 +87,7 @@ class _medicationReminderPageState extends State<medicationReminderPage> {
           builder:
               (BuildContext context, void Function(void Function()) setState) {
             return AlertDialog(
-              title: Text('Schedule Notification'),
+              title: const Text('Schedule Notification'),
               content: SingleChildScrollView(
                 child: Form(
                   key: formKey,
@@ -105,7 +105,7 @@ class _medicationReminderPageState extends State<medicationReminderPage> {
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(16.0)),
-                          label: Text('Notification Title'),
+                          label: const Text('Notification Title'),
                         ),
                       ),
                       const SizedBox(height: 16),
@@ -121,7 +121,7 @@ class _medicationReminderPageState extends State<medicationReminderPage> {
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(16.0)),
-                          label: Text('Notification Description'),
+                          label: const Text('Notification Description'),
                         ),
                       ),
                       const SizedBox(height: 16),
@@ -139,7 +139,7 @@ class _medicationReminderPageState extends State<medicationReminderPage> {
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(12.0)),
                           suffixIcon: InkWell(
-                            child: Icon(Icons.date_range),
+                            child: const Icon(Icons.date_range),
                             onTap: () async {
                               final DateTime? newlySelectedDate =
                                   await showDatePicker(
@@ -157,7 +157,7 @@ class _medicationReminderPageState extends State<medicationReminderPage> {
                               }
                             },
                           ),
-                          label: Text('Date'),
+                          label: const Text('Date'),
                         ),
                       ),
                       const SizedBox(height: 16.0),
@@ -198,12 +198,12 @@ class _medicationReminderPageState extends State<medicationReminderPage> {
                               }
                             },
                           ),
-                          label: Text('Time'),
+                          label: const Text('Time'),
                         ),
                       ),
                       const SizedBox(height: 16.0),
                       CheckboxListTile(
-                        title: Text("Repeat Daily"),
+                        title: const Text("Repeat Daily"),
                         value: isDaily,
                         onChanged: (value) {
                           setState(() {
@@ -220,7 +220,7 @@ class _medicationReminderPageState extends State<medicationReminderPage> {
                               Navigator.pop(context);
                               clear();
                             },
-                            child: Text("Close"),
+                            child: const Text("Close"),
                           ),
                           ElevatedButton(
                             onPressed: () {
@@ -232,7 +232,7 @@ class _medicationReminderPageState extends State<medicationReminderPage> {
                                 CustomToast(message: "All fields are required");
                               }
                             },
-                            child: Text('Show Notification'),
+                            child: const Text('Show Notification'),
                           ),
                         ],
                       ),
@@ -252,17 +252,18 @@ class _medicationReminderPageState extends State<medicationReminderPage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("Delete All Notifications"),
-          content: Text("Are you sure you want to delete all notifications?"),
+          title: const Text("Delete All Notifications"),
+          content:
+              const Text("Are you sure you want to delete all notifications?"),
           actions: [
             TextButton(
-              child: Text("Cancel"),
+              child: const Text("Cancel"),
               onPressed: () {
                 Navigator.of(context).pop();
               },
             ),
             ElevatedButton(
-              child: Text("Delete"),
+              child: const Text("Delete"),
               onPressed: () {
                 _deleteAllNotifications();
                 Navigator.of(context).pop();
@@ -282,7 +283,7 @@ class _medicationReminderPageState extends State<medicationReminderPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage(
               "assets/images/watchhhh.jpg",
@@ -308,23 +309,25 @@ class _medicationReminderPageState extends State<medicationReminderPage> {
                       title: Text(
                         notification.title,
                         overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                       subtitle: Text(
                         notification.description,
                         overflow: TextOverflow.ellipsis,
-                        style: TextStyle(fontSize: 12),
+                        style: const TextStyle(fontSize: 12),
                       ),
                       trailing: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Text(
                             '${notification.dateTime.hour}:${notification.dateTime.minute}  ${notification.dateTime.day}/${notification.dateTime.month}/${notification.dateTime.year}',
-                            style: TextStyle(fontSize: 15, color: Colors.green),
+                            style: const TextStyle(
+                                fontSize: 15, color: Colors.green),
                           ),
                           IconButton(
-                            icon: Icon(Icons.delete_forever, color: Colors.red),
+                            icon: const Icon(Icons.delete_forever,
+                                color: Colors.red),
                             onPressed: () async {
                               await deleteNotification(index);
                               refreshIndicatorKey.currentState?.show();
@@ -335,7 +338,7 @@ class _medicationReminderPageState extends State<medicationReminderPage> {
                     );
                   },
                   separatorBuilder: (BuildContext context, int index) {
-                    return Divider(
+                    return const Divider(
                       color: Color.fromARGB(255, 5, 65, 114),
                     );
                   },
@@ -354,16 +357,16 @@ class _medicationReminderPageState extends State<medicationReminderPage> {
               await showDeleteConfirmationDialog(context);
               refreshIndicatorKey.currentState?.show();
             },
-            child: Icon(Icons.delete),
+            child: const Icon(Icons.delete),
           ),
-          SizedBox(width: 10),
+          const SizedBox(width: 10),
           FloatingActionButton(
-            backgroundColor: Color.fromARGB(255, 5, 65, 114),
+            backgroundColor: const Color.fromARGB(255, 5, 65, 114),
             onPressed: () async {
               await showFormDialog(context);
               refreshIndicatorKey.currentState?.show();
             },
-            child: Icon(Icons.notifications),
+            child: const Icon(Icons.notifications),
           ),
         ],
       ),

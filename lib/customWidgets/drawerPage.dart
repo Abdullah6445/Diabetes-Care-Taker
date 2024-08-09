@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:diabetes_care_taker/COMPONENTS_PAGES/model/educationLibraryPage.dart';
-import 'package:diabetes_care_taker/COMPONENTS_PAGES/emergencyAlertPage.dart';
-import 'package:diabetes_care_taker/COMPONENTS_PAGES/exerciseTrackingPage.dart';
-import 'package:diabetes_care_taker/COMPONENTS_PAGES/testTablePage.dart';
-import 'package:diabetes_care_taker/PAGES/customToastPage.dart';
+import 'package:diabetes_care_taker/drawer/educationLibrary/educationLibraryPage.dart';
+import 'package:diabetes_care_taker/drawer/emergencyAlert/emergencyAlertPage.dart';
+import 'package:diabetes_care_taker/drawer/exerciseTracking/exerciseTrackingPage.dart';
+import 'package:diabetes_care_taker/drawer/dabetesRelatedTest/testTablePage.dart';
+import 'package:diabetes_care_taker/customWidgets/customToastPage.dart';
 import 'package:diabetes_care_taker/connection/ConnectionClass.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -66,10 +66,10 @@ class _drawerPageState extends State<drawerPage> {
               decoration: BoxDecoration(
                 color: colorScheme.primary,
               ),
-              padding: EdgeInsets.all(0),
+              padding: const EdgeInsets.all(0),
               child: Column(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     width: 20,
                     height: 20,
                   ),
@@ -77,12 +77,12 @@ class _drawerPageState extends State<drawerPage> {
                     'assets/images/white_dtc_logo_horizontal.png',
                     scale: 3,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Text(
                     userName.isEmpty ? '' : 'Welcome, $userName',
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.white,
                       fontSize: 18,
                     ),
@@ -95,12 +95,12 @@ class _drawerPageState extends State<drawerPage> {
             horizontalTitleGap: 0,
             onTap: () {
               ConnectionClass()
-                  .connection_function_navigator(educationLibraryPage());
+                  .connection_function_navigator(const educationLibraryPage());
             },
             leading: Icon(Icons.library_books,
                 color: Colors.black,
                 size: MediaQuery.of(context).size.height * .033),
-            title: Text(
+            title: const Text(
               "Diabetes Education library",
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
@@ -119,7 +119,7 @@ class _drawerPageState extends State<drawerPage> {
               color: Colors.black,
               size: MediaQuery.of(context).size.height * .033,
             ),
-            title: Text(
+            title: const Text(
               "Exercise Tracking",
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
@@ -130,7 +130,7 @@ class _drawerPageState extends State<drawerPage> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => testTablePage(),
+                    builder: (context) => const testTablePage(),
                   ));
             },
             leading: Icon(
@@ -138,7 +138,7 @@ class _drawerPageState extends State<drawerPage> {
               color: Colors.black,
               size: MediaQuery.of(context).size.height * .033,
             ),
-            title: Text(
+            title: const Text(
               "Diabetes Related Tests",
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
@@ -146,19 +146,19 @@ class _drawerPageState extends State<drawerPage> {
           ListTile(
             horizontalTitleGap: 0,
             onTap: () {
-              Get.to(emergencyAlertPage());
+              Get.to(const emergencyAlertPage());
             },
             leading: Icon(
               Icons.bus_alert,
               color: Colors.black,
               size: MediaQuery.of(context).size.height * .033,
             ),
-            title: Text(
+            title: const Text(
               "Emergency Alert",
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
           ),
-          Divider(
+          const Divider(
             thickness: 2,
           ),
           ListTile(
@@ -174,7 +174,7 @@ class _drawerPageState extends State<drawerPage> {
             ),
             title: Text(
               "Logout",
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)
                   ?.copyWith(color: Colors.redAccent),
             ),
           ),

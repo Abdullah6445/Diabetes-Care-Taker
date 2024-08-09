@@ -1,5 +1,5 @@
-import 'package:diabetes_care_taker/PAGES/customToastPage.dart';
-import 'package:diabetes_care_taker/PAGES/popupMenuPage.dart';
+import 'package:diabetes_care_taker/customWidgets/customToastPage.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -76,7 +76,7 @@ class _emergencyAlertPageState extends State<emergencyAlertPage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Edit Emergency Contact'),
+          title: const Text('Edit Emergency Contact'),
           content: SingleChildScrollView(
             child: Form(
               key: formKey,
@@ -127,7 +127,7 @@ class _emergencyAlertPageState extends State<emergencyAlertPage> {
                         onPressed: () {
                           Navigator.pop(context);
                         },
-                        child: Text("Close"),
+                        child: const Text("Close"),
                       ),
                       ElevatedButton(
                         onPressed: () {
@@ -144,7 +144,7 @@ class _emergencyAlertPageState extends State<emergencyAlertPage> {
                             CustomToast(message: "All fields are required");
                           }
                         },
-                        child: Text('Update Contact'),
+                        child: const Text('Update Contact'),
                       ),
                     ],
                   ),
@@ -162,17 +162,17 @@ class _emergencyAlertPageState extends State<emergencyAlertPage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("Delete All Contacts"),
-          content: Text("Are you sure you want to delete all contacts?"),
+          title: const Text("Delete All Contacts"),
+          content: const Text("Are you sure you want to delete all contacts?"),
           actions: [
             TextButton(
-              child: Text("Cancel"),
+              child: const Text("Cancel"),
               onPressed: () {
                 Navigator.of(context).pop();
               },
             ),
             ElevatedButton(
-              child: Text("Delete"),
+              child: const Text("Delete"),
               onPressed: () {
                 deleteAllContacts();
                 Navigator.of(context).pop();
@@ -191,7 +191,7 @@ class _emergencyAlertPageState extends State<emergencyAlertPage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Add Emergency Contact'),
+          title: const Text('Add Emergency Contact'),
           content: SingleChildScrollView(
             child: Form(
               key: formKey,
@@ -242,7 +242,7 @@ class _emergencyAlertPageState extends State<emergencyAlertPage> {
                         onPressed: () {
                           Navigator.pop(context);
                         },
-                        child: Text("Close"),
+                        child: const Text("Close"),
                       ),
                       ElevatedButton(
                         onPressed: () {
@@ -259,7 +259,7 @@ class _emergencyAlertPageState extends State<emergencyAlertPage> {
                             CustomToast(message: "All fields are required");
                           }
                         },
-                        child: Text('Add Contact'),
+                        child: const Text('Add Contact'),
                       ),
                     ],
                   ),
@@ -278,7 +278,7 @@ class _emergencyAlertPageState extends State<emergencyAlertPage> {
       appBar: AppBar(
         actions: [
           IconButton(
-            icon: Icon(
+            icon: const Icon(
               Icons.delete,
               color: Colors.red,
             ),
@@ -286,7 +286,7 @@ class _emergencyAlertPageState extends State<emergencyAlertPage> {
           ),
         ],
         elevation: 10,
-        title: Text("Emergency Alert"),
+        title: const Text("Emergency Alert"),
       ),
       body: Column(
         children: [
@@ -301,18 +301,19 @@ class _emergencyAlertPageState extends State<emergencyAlertPage> {
                   title: Text(
                     contact['name']!,
                     overflow: TextOverflow.ellipsis,
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    style: const TextStyle(
+                        fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                   subtitle: Text(
                     contact['phone']!,
                     overflow: TextOverflow.ellipsis,
-                    style: TextStyle(fontSize: 12),
+                    style: const TextStyle(fontSize: 12),
                   ),
                   trailing: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       IconButton(
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.delete,
                           color: Colors.red,
                         ),
@@ -321,7 +322,7 @@ class _emergencyAlertPageState extends State<emergencyAlertPage> {
                         },
                       ),
                       IconButton(
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.edit,
                           color: Colors.black,
                         ),
@@ -330,7 +331,7 @@ class _emergencyAlertPageState extends State<emergencyAlertPage> {
                         },
                       ),
                       IconButton(
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.message,
                           color: Colors.green,
                         ),
@@ -358,7 +359,7 @@ class _emergencyAlertPageState extends State<emergencyAlertPage> {
                 );
               },
               separatorBuilder: (BuildContext context, int index) {
-                return Divider(
+                return const Divider(
                   color: Color.fromARGB(255, 5, 65, 114),
                 );
               },
@@ -367,11 +368,11 @@ class _emergencyAlertPageState extends State<emergencyAlertPage> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Color.fromARGB(255, 5, 65, 114),
+        backgroundColor: const Color.fromARGB(255, 5, 65, 114),
         onPressed: () {
           showFormDialog();
         },
-        child: Icon(Icons.add_call),
+        child: const Icon(Icons.add_call),
       ),
     );
   }

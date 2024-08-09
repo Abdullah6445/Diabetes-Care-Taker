@@ -1,17 +1,17 @@
 import 'package:background_fetch/background_fetch.dart';
-import 'package:diabetes_care_taker/COMPONENTS_PAGES/medicationReminderPage.dart';
-import 'package:diabetes_care_taker/CONTROLLER_PAGE/insulinDosePageController.dart';
-import 'package:diabetes_care_taker/CONTROLLER_PAGE/mealDoseCalulationPageController.dart';
-import 'package:diabetes_care_taker/PAGES/homePage.dart';
+import 'package:diabetes_care_taker/dashboard/medicationReminder/medicationReminderPage.dart';
+import 'package:diabetes_care_taker/dashboard/insulinDose/insulinDosePageController.dart';
+import 'package:diabetes_care_taker/dashboard/insulinDose/mealDoseCalulationPageController.dart';
+import 'package:diabetes_care_taker/Home/homePage.dart';
 import 'package:diabetes_care_taker/connection/ConnectionClass.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:diabetes_care_taker/COMPONENTS_PAGES/loginScreen.dart';
-import 'package:diabetes_care_taker/COMPONENTS_PAGES/signupScreen.dart';
-import 'package:diabetes_care_taker/COMPONENTS_PAGES/splashScreen.dart';
+import 'package:diabetes_care_taker/auth/loginScreen.dart';
+import 'package:diabetes_care_taker/auth/signupScreen.dart';
+import 'package:diabetes_care_taker/auth/splashScreen.dart';
 
 void backgroundFetchHeadlessTask() async {
   showScheduleNotification();
@@ -72,18 +72,18 @@ class _MyAppState extends State<MyApp> {
         debugShowCheckedModeBanner: false,
         title: 'Diabetes Care Taker',
         theme: ThemeData(
-          textTheme: TextTheme(),
+          textTheme: const TextTheme(),
           colorScheme: ColorScheme.fromSeed(
-            seedColor: Color.fromARGB(255, 5, 65, 114),
+            seedColor: const Color.fromARGB(255, 5, 65, 114),
           ),
           useMaterial3: false,
         ),
-        home: user != null ? homePage() : splashScreen(),
+        home: user != null ? const homePage() : splashScreen(),
         routes: {
           '/splashscreen': (context) => splashScreen(),
           '/login': (context) => loginScreen(),
           '/signup': (context) => signupScreen(),
-          '/home': (context) => homePage(),
+          '/home': (context) => const homePage(),
         },
       ),
     );

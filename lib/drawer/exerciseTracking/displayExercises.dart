@@ -11,7 +11,7 @@ class displayExercises extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Exercises History'),
+        title: const Text('Exercises History'),
       ),
       body: StreamBuilder(
         stream: FirebaseFirestore.instance
@@ -22,7 +22,7 @@ class displayExercises extends StatelessWidget {
             .snapshots(),
         builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           }
 
           if (snapshot.hasError) {
@@ -30,11 +30,11 @@ class displayExercises extends StatelessWidget {
           }
 
           if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-            return Center(child: Text('No exercises logs found'));
+            return const Center(child: Text('No exercises logs found'));
           }
 
           return ListView.builder(
-            padding: EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(16.0),
             itemCount: snapshot.data!.docs.length,
             itemBuilder: (context, index) {
               Map<String, dynamic> data =
@@ -61,29 +61,30 @@ class displayExercises extends StatelessWidget {
               }
 
               return Card(
-                margin: EdgeInsets.symmetric(vertical: 8.0),
+                margin: const EdgeInsets.symmetric(vertical: 8.0),
                 elevation: 4.0,
                 child: Padding(
-                  padding: EdgeInsets.all(16.0),
+                  padding: const EdgeInsets.all(16.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         '$formattedDate at $formattedTime',
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 17.0,
                         ),
                       ),
-                      SizedBox(height: 8.0),
+                      const SizedBox(height: 8.0),
                       Text.rich(
                         TextSpan(
                           text: 'Activity: ',
-                          style: TextStyle(fontWeight: FontWeight.normal),
+                          style: const TextStyle(fontWeight: FontWeight.normal),
                           children: [
                             TextSpan(
                               text: '$activity',
-                              style: TextStyle(fontWeight: FontWeight.bold),
+                              style:
+                                  const TextStyle(fontWeight: FontWeight.bold),
                             ),
                           ],
                         ),
@@ -91,11 +92,12 @@ class displayExercises extends StatelessWidget {
                       Text.rich(
                         TextSpan(
                           text: 'Duration: ',
-                          style: TextStyle(fontWeight: FontWeight.normal),
+                          style: const TextStyle(fontWeight: FontWeight.normal),
                           children: [
                             TextSpan(
                               text: '$duration min',
-                              style: TextStyle(fontWeight: FontWeight.bold),
+                              style:
+                                  const TextStyle(fontWeight: FontWeight.bold),
                             ),
                           ],
                         ),
@@ -104,13 +106,15 @@ class displayExercises extends StatelessWidget {
                         Text.rich(
                           TextSpan(
                             text: 'Blood Glucose Before: ',
-                            style: TextStyle(fontWeight: FontWeight.normal),
+                            style:
+                                const TextStyle(fontWeight: FontWeight.normal),
                             children: [
                               TextSpan(
                                 text: '$bgBefore',
-                                style: TextStyle(fontWeight: FontWeight.bold),
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold),
                               ),
-                              TextSpan(
+                              const TextSpan(
                                 text: ' mg/dl',
                                 style: TextStyle(fontWeight: FontWeight.normal),
                               ),
@@ -121,13 +125,15 @@ class displayExercises extends StatelessWidget {
                         Text.rich(
                           TextSpan(
                             text: 'Blood Glucose After: ',
-                            style: TextStyle(fontWeight: FontWeight.normal),
+                            style:
+                                const TextStyle(fontWeight: FontWeight.normal),
                             children: [
                               TextSpan(
                                 text: '$bgAfter',
-                                style: TextStyle(fontWeight: FontWeight.bold),
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold),
                               ),
-                              TextSpan(
+                              const TextSpan(
                                 text: ' mg/dl',
                                 style: TextStyle(fontWeight: FontWeight.normal),
                               ),
@@ -137,7 +143,7 @@ class displayExercises extends StatelessWidget {
                       if (differenceMessage.isNotEmpty)
                         Row(
                           children: [
-                            Text("• ",
+                            const Text("• ",
                                 style: TextStyle(fontWeight: FontWeight.bold)),
                             Expanded(
                               child: Text(differenceMessage),

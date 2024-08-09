@@ -1,4 +1,4 @@
-import 'package:diabetes_care_taker/PopUpMenuClass.dart';
+import 'package:diabetes_care_taker/popUpButton/PopUpMenuClass.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -10,7 +10,7 @@ class popupMenuPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton(
-      offset: Offset(0, 50),
+      offset: const Offset(0, 50),
       itemBuilder: (context) => [
         PopupMenuItem(
             child: ListTile(
@@ -24,8 +24,8 @@ class popupMenuPage extends StatelessWidget {
             );
           },
           horizontalTitleGap: 0,
-          leading: Icon(Icons.info_outline_rounded, color: Colors.black),
-          title: Text("ABOUT App"),
+          leading: const Icon(Icons.info_outline_rounded, color: Colors.black),
+          title: const Text("ABOUT App"),
         )),
         PopupMenuItem(
             child: ListTile(
@@ -39,8 +39,9 @@ class popupMenuPage extends StatelessWidget {
             );
           },
           horizontalTitleGap: 0,
-          leading: Icon(Icons.contact_emergency_outlined, color: Colors.black),
-          title: Text("Contact Us"),
+          leading:
+              const Icon(Icons.contact_emergency_outlined, color: Colors.black),
+          title: const Text("Contact Us"),
         )),
         PopupMenuItem(
             child: ListTile(
@@ -54,8 +55,8 @@ class popupMenuPage extends StatelessWidget {
             );
           },
           horizontalTitleGap: 0,
-          leading: Icon(Icons.help_center_outlined, color: Colors.black),
-          title: Text("Help Center"),
+          leading: const Icon(Icons.help_center_outlined, color: Colors.black),
+          title: const Text("Help Center"),
         )),
         PopupMenuItem(
             child: ListTile(
@@ -69,8 +70,8 @@ class popupMenuPage extends StatelessWidget {
             );
           },
           horizontalTitleGap: 0,
-          leading: Icon(Icons.group, color: Colors.black),
-          title: Text("Developers"),
+          leading: const Icon(Icons.group, color: Colors.black),
+          title: const Text("Developers"),
         )),
         PopupMenuItem(
             child: ListTile(
@@ -84,8 +85,8 @@ class popupMenuPage extends StatelessWidget {
             );
           },
           horizontalTitleGap: 0,
-          leading: Icon(Icons.menu_book_sharp, color: Colors.black),
-          title: Text("Terms and Privacy Policy"),
+          leading: const Icon(Icons.menu_book_sharp, color: Colors.black),
+          title: const Text("Terms and Privacy Policy"),
         )),
       ],
     );

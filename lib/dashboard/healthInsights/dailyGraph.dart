@@ -105,7 +105,7 @@ class _dailyGraphState extends State<dailyGraph> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Daily Blood Glucose Graph'),
+        title: const Text('Daily Blood Glucose Graph'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
@@ -116,15 +116,15 @@ class _dailyGraphState extends State<dailyGraph> {
               children: [
                 Text(
                   'Selected Date: ${DateFormat('yyyy-MM-dd').format(_selectedDate)}',
-                  style: TextStyle(fontSize: 16),
+                  style: const TextStyle(fontSize: 16),
                 ),
                 ElevatedButton(
                   onPressed: () => _selectDate(context),
-                  child: Text('Select Date'),
+                  child: const Text('Select Date'),
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 120,
             ),
             Padding(
@@ -132,11 +132,11 @@ class _dailyGraphState extends State<dailyGraph> {
               child: SizedBox(
                 height: 400,
                 child: _isLoading
-                    ? Center(child: CircularProgressIndicator())
+                    ? const Center(child: CircularProgressIndicator())
                     : _errorMessage.isNotEmpty
                         ? Center(child: Text(_errorMessage))
                         : _noData
-                            ? Center(
+                            ? const Center(
                                 child: Text(
                                     'No blood glucose readings were entered to show'))
                             : LineChart(
@@ -150,7 +150,7 @@ class _dailyGraphState extends State<dailyGraph> {
                                   ),
                                   borderData: FlBorderData(
                                     show: true,
-                                    border: Border(
+                                    border: const Border(
                                       right:
                                           BorderSide(color: Colors.transparent),
                                       top:

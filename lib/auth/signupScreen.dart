@@ -1,8 +1,8 @@
-import 'package:diabetes_care_taker/PAGES/customToastPage.dart';
+import 'package:diabetes_care_taker/customWidgets/customToastPage.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:diabetes_care_taker/PAGES/customTextFormFieldPage.dart';
+import 'package:diabetes_care_taker/customWidgets/customTextFormFieldPage.dart';
 
 class signupScreen extends StatefulWidget {
   @override
@@ -31,12 +31,12 @@ class _signupScreenState extends State<signupScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(height: 90),
+              const SizedBox(height: 90),
               Image.asset(
                 'assets/images/Signup_Icon.png',
                 scale: 4,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 35,
               ),
               customTextFormField(
@@ -49,7 +49,7 @@ class _signupScreenState extends State<signupScreen> {
                 controllerr: nameController,
                 labelTextt: "Enter Your Name",
                 hintTextt: "Enter Your Name Here",
-                prefixIconn: Icon(Icons.person),
+                prefixIconn: const Icon(Icons.person),
                 keyboardType: TextInputType.text,
               ),
               customTextFormField(
@@ -62,7 +62,7 @@ class _signupScreenState extends State<signupScreen> {
                 controllerr: emailController,
                 labelTextt: "Enter Your Email",
                 hintTextt: "Enter Your Email Here",
-                prefixIconn: Icon(Icons.email),
+                prefixIconn: const Icon(Icons.email),
                 keyboardType: TextInputType.emailAddress,
               ),
               customTextFormField(
@@ -77,7 +77,7 @@ class _signupScreenState extends State<signupScreen> {
                 controllerr: passwordController,
                 labelTextt: "Enter Your Password",
                 hintTextt: "Enter Your Password Here",
-                prefixIconn: Icon(Icons.password),
+                prefixIconn: const Icon(Icons.password),
                 keyboardType: TextInputType.visiblePassword,
                 obscurityy: _isPasswordHidden,
                 suffixIconn: IconButton(
@@ -103,7 +103,7 @@ class _signupScreenState extends State<signupScreen> {
                 controllerr: confirmPasswordController,
                 labelTextt: "Confirm Password",
                 hintTextt: "Confirm Password",
-                prefixIconn: Icon(Icons.password),
+                prefixIconn: const Icon(Icons.password),
                 keyboardType: TextInputType.visiblePassword,
                 obscurityy: _isConfirmPasswordHidden,
                 suffixIconn: IconButton(
@@ -125,13 +125,13 @@ class _signupScreenState extends State<signupScreen> {
                   value: selectedDiabetesType,
                   decoration: InputDecoration(
                     labelText: 'Type of Diabetes',
-                    prefixIcon: Icon(Icons.bloodtype),
+                    prefixIcon: const Icon(Icons.bloodtype),
                     border: OutlineInputBorder(
-                      borderSide: BorderSide(width: 2.0),
+                      borderSide: const BorderSide(width: 2.0),
                       borderRadius: BorderRadius.circular(8.0),
                     ),
-                    contentPadding:
-                        EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
+                    contentPadding: const EdgeInsets.symmetric(
+                        horizontal: 16.0, vertical: 16.0),
                     isDense: true,
                   ),
                   items: <String>['Type 1', 'Type 2'].map((String value) {
@@ -154,7 +154,7 @@ class _signupScreenState extends State<signupScreen> {
                   },
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               SizedBox(
@@ -213,7 +213,7 @@ class _signupScreenState extends State<signupScreen> {
                       borderRadius: BorderRadius.circular(30.0),
                     ),
                   ),
-                  child: Row(
+                  child: const Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
@@ -225,14 +225,14 @@ class _signupScreenState extends State<signupScreen> {
                   ),
                 ),
               ),
-              SizedBox(
-                height: 75,
+              const SizedBox(
+                height: 15,
               ),
               TextButton(
                 onPressed: () {
                   Navigator.pushReplacementNamed(context, '/login');
                 },
-                child: Text('Already have an account?  Login'),
+                child: const Text('Already have an account?  Login'),
               ),
             ],
           ),

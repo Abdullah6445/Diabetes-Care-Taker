@@ -1,6 +1,6 @@
-import 'package:diabetes_care_taker/COMPONENTS_PAGES/displayExercises.dart';
-import 'package:diabetes_care_taker/PAGES/customTextFormFieldPage.dart';
-import 'package:diabetes_care_taker/PAGES/customToastPage.dart';
+import 'package:diabetes_care_taker/drawer/exerciseTracking/displayExercises.dart';
+import 'package:diabetes_care_taker/customWidgets/customTextFormFieldPage.dart';
+import 'package:diabetes_care_taker/customWidgets/customToastPage.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -146,27 +146,27 @@ class _exerciseLogScreenState extends State<exerciseLogScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Log Exercise'),
+        title: const Text('Log Exercise'),
       ),
       body: Form(
         key: _formKey,
         child: SingleChildScrollView(
           child: Column(
             children: <Widget>[
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
-              Text(
+              const Text(
                 'Your Exercise Tracking',
                 style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 16, right: 16),
                 child: DropdownButtonFormField(
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: 'Select Exercise',
                     border: OutlineInputBorder(),
                     prefixIcon: Icon(FontAwesomeIcons.personRunning,
@@ -191,7 +191,7 @@ class _exerciseLogScreenState extends State<exerciseLogScreen> {
                   },
                 ),
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               customTextFormField(
                 validatorrr: MultiValidator([
                   RequiredValidator(errorText: "Enter exercise duration"),
@@ -199,10 +199,10 @@ class _exerciseLogScreenState extends State<exerciseLogScreen> {
                 controllerr: _durationController,
                 labelTextt: "Duration (minutes)",
                 hintTextt: "Enter erercise duration",
-                prefixIconn: Icon(Icons.timer),
+                prefixIconn: const Icon(Icons.timer),
                 keyboardType: TextInputType.number,
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               customTextFormField(
                 // validatorrr: MultiValidator([
                 //   RequiredValidator(errorText: "Enter bg levels before exercise"),
@@ -210,10 +210,10 @@ class _exerciseLogScreenState extends State<exerciseLogScreen> {
                 controllerr: _bgBeforeController,
                 labelTextt: "Blood Glucose Level Before Exercise",
                 hintTextt: "Enter BG level",
-                prefixIconn: Icon(Icons.health_and_safety),
+                prefixIconn: const Icon(Icons.health_and_safety),
                 keyboardType: TextInputType.number,
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               customTextFormField(
                 // validatorrr: MultiValidator([
                 //   RequiredValidator(errorText: "Enter bg levels after exercise"),
@@ -221,10 +221,10 @@ class _exerciseLogScreenState extends State<exerciseLogScreen> {
                 controllerr: _bgAfterController,
                 labelTextt: "Blood Glucose Level After Exercise",
                 hintTextt: "Enter BG level",
-                prefixIconn: Icon(Icons.health_and_safety),
+                prefixIconn: const Icon(Icons.health_and_safety),
                 keyboardType: TextInputType.number,
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               Row(
                 children: [
                   Expanded(
@@ -235,12 +235,12 @@ class _exerciseLogScreenState extends State<exerciseLogScreen> {
                       controllerr: _dateController,
                       labelTextt: "Date",
                       hintTextt: "Select exercise date",
-                      prefixIconn: Icon(Icons.calendar_today),
+                      prefixIconn: const Icon(Icons.calendar_today),
                       readOnlyy: true,
                       onTap: _selectDate,
                     ),
                   ),
-                  SizedBox(width: 16),
+                  const SizedBox(width: 16),
                   Expanded(
                     child: customTextFormField(
                       validatorrr: MultiValidator([
@@ -249,16 +249,16 @@ class _exerciseLogScreenState extends State<exerciseLogScreen> {
                       controllerr: _timeController,
                       labelTextt: "Time",
                       hintTextt: "Select exercise time",
-                      prefixIconn: Icon(Icons.access_time),
+                      prefixIconn: const Icon(Icons.access_time),
                       readOnlyy: true,
                       onTap: _selectTime,
                     ),
                   ),
                 ],
               ),
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
               loading
-                  ? CircularProgressIndicator()
+                  ? const CircularProgressIndicator()
                   : SizedBox(
                       height: 45,
                       width: 200,
@@ -269,11 +269,11 @@ class _exerciseLogScreenState extends State<exerciseLogScreen> {
                             borderRadius: BorderRadius.circular(30.0),
                           ),
                         ),
-                        child: Text('Add Exercise',
+                        child: const Text('Add Exercise',
                             style: TextStyle(fontSize: 17)),
                       ),
                     ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               SizedBox(
@@ -293,7 +293,7 @@ class _exerciseLogScreenState extends State<exerciseLogScreen> {
                       borderRadius: BorderRadius.circular(30.0),
                     ),
                   ),
-                  child: Text('Track Your Exercises',
+                  child: const Text('Track Your Exercises',
                       style: TextStyle(fontSize: 17)),
                 ),
               ),

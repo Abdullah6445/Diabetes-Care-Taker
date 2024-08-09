@@ -28,7 +28,7 @@ class ConnectionClass {
                   onPressed: () {
                     Get.closeCurrentSnackbar();
                   },
-                  child: Text(
+                  child: const Text(
                     "OK",
                     style: TextStyle(fontWeight: FontWeight.w900),
                   )));
@@ -52,24 +52,6 @@ class ConnectionClass {
     });
   }
 
-  // Future<void> refresh() async {
-  //   bool result = await InternetConnectionChecker().hasConnection;
-  //   if (result == false) {
-  //     Get.snackbar(
-  //       "No Internet Connection",
-  //       "Please check your internet.",
-  //       icon: Icon(
-  //         Icons.signal_wifi_statusbar_connected_no_internet_4_rounded,
-  //         color: Colors.red.shade900,
-  //       ),
-  //       backgroundColor: Colors.blue.shade200,
-  //       colorText: Colors.red.shade900,
-  //     );
-  //   } else {
-  //     null;
-  //   }
-  // }
-
   Future<void> connection_function_navigator(Widget widget) async {
     bool result = await InternetConnectionChecker().hasConnection;
     if (result == true) {
@@ -88,22 +70,3 @@ class ConnectionClass {
     }
   }
 }
-
-//////////////////////////////////////////////////
-///
-///
-///
-///
-/////////////////////////////////////////////////
-
-// class ConnectionUtils {
-//   void isInternetAvailable() {
-//     Future<bool> valuwwww = InternetConnectionChecker().hasConnection;
-//     debugPrint("app open : " + valuwwww.toString());
-//     if (valuwwww == false) {
-//       return debugPrint("value is while app open is : $valuwwww");
-//     } else {
-//       runApp(MyApp());
-//     }
-//   }
-// }

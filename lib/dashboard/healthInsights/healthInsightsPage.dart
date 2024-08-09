@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:diabetes_care_taker/COMPONENTS_PAGES/dailyGraph.dart';
-import 'package:diabetes_care_taker/COMPONENTS_PAGES/weeklyGraph.dart';
-import 'package:diabetes_care_taker/COMPONENTS_PAGES/monthlyGraph.dart';
+import 'package:diabetes_care_taker/dashboard/healthInsights/dailyGraph.dart';
+import 'package:diabetes_care_taker/dashboard/healthInsights/weeklyGraph.dart';
+import 'package:diabetes_care_taker/dashboard/healthInsights/monthlyGraph.dart';
 
 class healthIsightsPage extends StatefulWidget {
   const healthIsightsPage({super.key});
@@ -18,14 +18,14 @@ class _healthIsightsPageState extends State<healthIsightsPage> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
-              Text(
+              const Text(
                 'Health Insights & Trends',
                 style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               GestureDetector(
@@ -37,9 +37,9 @@ class _healthIsightsPageState extends State<healthIsightsPage> {
                     ),
                   );
                 },
-                child: Card(
+                child: const Card(
                   child: Padding(
-                    padding: const EdgeInsets.all(20.0),
+                    padding: EdgeInsets.all(20.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -56,7 +56,7 @@ class _healthIsightsPageState extends State<healthIsightsPage> {
                   ),
                 ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               SizedBox(
                 width: 200,
                 height: 45,
@@ -74,13 +74,13 @@ class _healthIsightsPageState extends State<healthIsightsPage> {
                       borderRadius: BorderRadius.circular(30.0),
                     ),
                   ),
-                  child: Text(
+                  child: const Text(
                     'Show Daily Graph',
                     style: TextStyle(fontSize: 17),
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               GestureDetector(
@@ -92,9 +92,9 @@ class _healthIsightsPageState extends State<healthIsightsPage> {
                     ),
                   );
                 },
-                child: Card(
+                child: const Card(
                   child: Padding(
-                    padding: const EdgeInsets.all(20.0),
+                    padding: EdgeInsets.all(20.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -111,7 +111,7 @@ class _healthIsightsPageState extends State<healthIsightsPage> {
                   ),
                 ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               SizedBox(
                 width: 200,
                 height: 45,
@@ -129,13 +129,13 @@ class _healthIsightsPageState extends State<healthIsightsPage> {
                       borderRadius: BorderRadius.circular(30.0),
                     ),
                   ),
-                  child: Text(
+                  child: const Text(
                     'Show Weekly Graph',
                     style: TextStyle(fontSize: 17),
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               GestureDetector(
@@ -147,9 +147,9 @@ class _healthIsightsPageState extends State<healthIsightsPage> {
                     ),
                   );
                 },
-                child: Card(
+                child: const Card(
                   child: Padding(
-                    padding: const EdgeInsets.all(20.0),
+                    padding: EdgeInsets.all(20.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -166,7 +166,7 @@ class _healthIsightsPageState extends State<healthIsightsPage> {
                   ),
                 ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               SizedBox(
                 width: 200,
                 height: 45,
@@ -184,13 +184,13 @@ class _healthIsightsPageState extends State<healthIsightsPage> {
                       borderRadius: BorderRadius.circular(30.0),
                     ),
                   ),
-                  child: Text(
+                  child: const Text(
                     'Show Monthly Graph',
                     style: TextStyle(fontSize: 17),
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               )
             ],

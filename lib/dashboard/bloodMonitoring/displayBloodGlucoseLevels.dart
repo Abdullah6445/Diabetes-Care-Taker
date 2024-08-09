@@ -23,7 +23,7 @@ class _displayBloodGlucoseLevelsState extends State<displayBloodGlucoseLevels> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Blood Glucose Readings'),
+        title: const Text('Blood Glucose Readings'),
       ),
       body: StreamBuilder<QuerySnapshot>(
         stream: _firestore
@@ -34,11 +34,11 @@ class _displayBloodGlucoseLevelsState extends State<displayBloodGlucoseLevels> {
             .snapshots(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           }
 
           if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-            return Center(child: Text('No BG Readings to Display'));
+            return const Center(child: Text('No BG Readings to Display'));
           }
 
           final List<DocumentSnapshot> documents = snapshot.data!.docs;
@@ -55,14 +55,14 @@ class _displayBloodGlucoseLevelsState extends State<displayBloodGlucoseLevels> {
                   dividerThickness: 2.0,
                   headingRowColor: MaterialStateProperty.resolveWith<Color?>(
                     (Set<MaterialState> states) {
-                      return Color.fromARGB(255, 5, 65, 114);
+                      return const Color.fromARGB(255, 5, 65, 114);
                     },
                   ),
-                  headingTextStyle: TextStyle(
+                  headingTextStyle: const TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
                       fontSize: 17),
-                  columns: [
+                  columns: const [
                     DataColumn(label: Text('Date')),
                     DataColumn(label: Text('Time')),
                     DataColumn(label: Text('BGL')),
@@ -75,37 +75,37 @@ class _displayBloodGlucoseLevelsState extends State<displayBloodGlucoseLevels> {
                       .map((doc) => DataRow(cells: [
                             DataCell(Text(
                               doc['Date'] ?? '',
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontWeight: FontWeight.normal, fontSize: 17),
                             )),
                             DataCell(Text(
                               doc['Time'] ?? '',
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontWeight: FontWeight.normal, fontSize: 17),
                             )),
                             DataCell(Text(
                               doc['Blood Glucose Level'] ?? '',
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontWeight: FontWeight.normal, fontSize: 17),
                             )),
                             DataCell(Text(
                               doc['Carb Intake'] ?? '',
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontWeight: FontWeight.normal, fontSize: 17),
                             )),
                             DataCell(Text(
                               doc['Bolus Insulin Intake'] ?? '',
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontWeight: FontWeight.normal, fontSize: 17),
                             )),
                             DataCell(Text(
                               doc['Basal Insulin Intake'] ?? '',
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontWeight: FontWeight.normal, fontSize: 17),
                             )),
                             DataCell(Text(
                               doc['Notes'] ?? '',
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontWeight: FontWeight.normal, fontSize: 17),
                             )),
                           ]))

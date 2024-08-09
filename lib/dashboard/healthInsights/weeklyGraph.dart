@@ -15,7 +15,7 @@ class _weeklyGraphState extends State<weeklyGraph> {
   bool _isLoading = true;
   String _errorMessage = '';
   bool _noData = false;
-  DateTime _startDate = DateTime.now().subtract(Duration(days: 6));
+  DateTime _startDate = DateTime.now().subtract(const Duration(days: 6));
   final _auth = FirebaseAuth.instance;
 
   @override
@@ -29,7 +29,7 @@ class _weeklyGraphState extends State<weeklyGraph> {
       _isLoading = true;
       _errorMessage = '';
       _noData = false;
-      _startDate = selectedDate.subtract(Duration(days: 6));
+      _startDate = selectedDate.subtract(const Duration(days: 6));
     });
 
     User? user = _auth.currentUser;
@@ -111,7 +111,7 @@ class _weeklyGraphState extends State<weeklyGraph> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Weekly Blood Glucose Graph'),
+        title: const Text('Weekly Blood Glucose Graph'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
@@ -122,25 +122,25 @@ class _weeklyGraphState extends State<weeklyGraph> {
               children: [
                 Text(
                   'Selected Date: ${DateFormat('yyyy-MM-dd').format(_selectedDate)}',
-                  style: TextStyle(fontSize: 16),
+                  style: const TextStyle(fontSize: 16),
                 ),
                 ElevatedButton(
                   onPressed: () => _selectDate(context),
-                  child: Text('Select Date'),
+                  child: const Text('Select Date'),
                 ),
               ],
             ),
-            SizedBox(height: 120),
+            const SizedBox(height: 120),
             Padding(
               padding: const EdgeInsets.only(right: 10),
               child: SizedBox(
                 height: 400,
                 child: _isLoading
-                    ? Center(child: CircularProgressIndicator())
+                    ? const Center(child: CircularProgressIndicator())
                     : _errorMessage.isNotEmpty
                         ? Center(child: Text(_errorMessage))
                         : _noData
-                            ? Center(
+                            ? const Center(
                                 child: Text(
                                     'No blood glucose readings were entered to show'))
                             : LineChart(
@@ -154,7 +154,7 @@ class _weeklyGraphState extends State<weeklyGraph> {
                                   ),
                                   borderData: FlBorderData(
                                     show: true,
-                                    border: Border(
+                                    border: const Border(
                                       right:
                                           BorderSide(color: Colors.transparent),
                                       top:

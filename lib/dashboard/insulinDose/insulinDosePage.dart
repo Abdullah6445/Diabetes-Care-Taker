@@ -1,13 +1,13 @@
 // ignore_for_file: must_be_immutable
 
-import 'package:diabetes_care_taker/COMPONENTS_PAGES/mealDoseCalulationPage.dart';
+import 'package:diabetes_care_taker/dashboard/insulinDose/mealDoseCalulationPage.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:provider/provider.dart';
-import 'package:diabetes_care_taker/CONTROLLER_PAGE/insulinDosePageController.dart';
-import 'package:diabetes_care_taker/PAGES/customTextFormFieldPage.dart';
-import 'package:diabetes_care_taker/PAGES/customToastPage.dart';
+import 'package:diabetes_care_taker/dashboard/insulinDose/insulinDosePageController.dart';
+import 'package:diabetes_care_taker/customWidgets/customTextFormFieldPage.dart';
+import 'package:diabetes_care_taker/customWidgets/customToastPage.dart';
 
 class insulinDosePage extends StatelessWidget {
   insulinDosePage({Key? key}) : super(key: key);
@@ -29,21 +29,21 @@ class insulinDosePage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 25),
+              const Padding(
+                padding: EdgeInsets.only(top: 25),
                 child: Text(
                   'Insulin Dose Calculation',
                   style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               Consumer<insulinDosePageController>(
                 builder: (context, controller, child) {
                   return DropdownButton<String>(
                     iconEnabledColor: Colors.black,
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.red,
                       fontSize: 17,
                       fontWeight: FontWeight.bold,
@@ -70,7 +70,7 @@ class insulinDosePage extends StatelessWidget {
                 controllerr: insulindosepagecontroller.bolusInsulin,
                 labelTextt: "Enter Your Total Bolus Insulin Dose",
                 hintTextt: "Short/Rapid Acting Insulin",
-                prefixIconn: Icon(FontAwesomeIcons.syringe,
+                prefixIconn: const Icon(FontAwesomeIcons.syringe,
                     color: Color.fromARGB(255, 5, 65, 114)),
                 keyboardType: TextInputType.number,
               ),
@@ -81,11 +81,11 @@ class insulinDosePage extends StatelessWidget {
                 controllerr: insulindosepagecontroller.basalInsulin,
                 labelTextt: "Enter Your Total Basal Insulin Dose",
                 hintTextt: "Long Acting Insulin",
-                prefixIconn: Icon(FontAwesomeIcons.syringe,
+                prefixIconn: const Icon(FontAwesomeIcons.syringe,
                     color: Color.fromARGB(255, 5, 65, 114)),
                 keyboardType: TextInputType.number,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               SizedBox(
@@ -101,20 +101,22 @@ class insulinDosePage extends StatelessWidget {
                         borderRadius: BorderRadius.circular(30.0),
                       ),
                     ),
-                    child: Text('Calculate ISF(Insulin Sensitivity Factor)',
+                    child: const Text(
+                        'Calculate ISF(Insulin Sensitivity Factor)',
                         style: TextStyle(fontSize: 15))),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Consumer<insulinDosePageController>(
                   builder: (context, value, child) {
                 return Text(
                   "${value.isf.toStringAsFixed(0)} mg/dl",
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  style: const TextStyle(
+                      fontSize: 20, fontWeight: FontWeight.bold),
                 );
               }),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               SizedBox(
@@ -130,20 +132,21 @@ class insulinDosePage extends StatelessWidget {
                         borderRadius: BorderRadius.circular(30.0),
                       ),
                     ),
-                    child: Text('Calculate ICR(Insulin to Carb Ratio)',
+                    child: const Text('Calculate ICR(Insulin to Carb Ratio)',
                         style: TextStyle(fontSize: 15))),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Consumer<insulinDosePageController>(
                   builder: (context, value, child) {
                 return Text(
                   "${value.icr.toStringAsFixed(0)} gram",
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  style: const TextStyle(
+                      fontSize: 20, fontWeight: FontWeight.bold),
                 );
               }),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               SizedBox(
@@ -170,7 +173,7 @@ class insulinDosePage extends StatelessWidget {
                         borderRadius: BorderRadius.circular(30.0),
                       ),
                     ),
-                    child: Text('Meal & Correction Dose Calculation',
+                    child: const Text('Meal & Correction Dose Calculation',
                         style: TextStyle(fontSize: 15))),
               ),
             ],

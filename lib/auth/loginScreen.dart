@@ -1,8 +1,8 @@
-import 'package:diabetes_care_taker/COMPONENTS_PAGES/forgetPasswordScreen.dart';
-import 'package:diabetes_care_taker/PAGES/customToastPage.dart';
+import 'package:diabetes_care_taker/auth/forgetPasswordScreen.dart';
+import 'package:diabetes_care_taker/customWidgets/customToastPage.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:diabetes_care_taker/PAGES/customTextFormFieldPage.dart';
+import 'package:diabetes_care_taker/customWidgets/customTextFormFieldPage.dart';
 
 class loginScreen extends StatefulWidget {
   @override

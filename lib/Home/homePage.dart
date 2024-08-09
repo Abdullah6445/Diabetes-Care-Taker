@@ -1,9 +1,9 @@
-import 'package:diabetes_care_taker/COMPONENTS_PAGES/bloodGlucoseMonitoing.dart';
-import 'package:diabetes_care_taker/COMPONENTS_PAGES/healthInsightsPage.dart';
-import 'package:diabetes_care_taker/COMPONENTS_PAGES/insulinDosePage.dart';
-import 'package:diabetes_care_taker/COMPONENTS_PAGES/medicationReminderPage.dart';
-import 'package:diabetes_care_taker/PAGES/drawerPage.dart';
-import 'package:diabetes_care_taker/PAGES/popupMenuPage.dart';
+import 'package:diabetes_care_taker/dashboard/bloodMonitoring/bloodGlucoseMonitoing.dart';
+import 'package:diabetes_care_taker/dashboard/healthInsights/healthInsightsPage.dart';
+import 'package:diabetes_care_taker/dashboard/insulinDose/insulinDosePage.dart';
+import 'package:diabetes_care_taker/dashboard/medicationReminder/medicationReminderPage.dart';
+import 'package:diabetes_care_taker/customWidgets/drawerPage.dart';
+import 'package:diabetes_care_taker/popUpButton/popupMenuPage.dart';
 import 'package:flutter/material.dart';
 
 class homePage extends StatelessWidget {
@@ -16,11 +16,11 @@ class homePage extends StatelessWidget {
       child: Scaffold(
         drawer: drawerPage(),
         appBar: AppBar(
-          actions: [
+          actions: const [
             popupMenuPage(),
           ],
           elevation: 10,
-          title: Text(
+          title: const Text(
             "Diabetes Care Taker",
             style: TextStyle(fontWeight: FontWeight.w900),
           ),
@@ -33,7 +33,7 @@ class homePage extends StatelessWidget {
                   Icons.water_drop_sharp,
                   color: Colors.redAccent,
                 ),
-                child: Text(
+                child: const Text(
                   "Blood Glocuse Monitoring",
                   overflow: TextOverflow.ellipsis,
                 ),
@@ -44,7 +44,7 @@ class homePage extends StatelessWidget {
                   Icons.health_and_safety,
                   color: Colors.blue,
                 ),
-                child: Text(
+                child: const Text(
                   "Insights & Trends",
                   overflow: TextOverflow.ellipsis,
                 ),
@@ -55,7 +55,7 @@ class homePage extends StatelessWidget {
                   Icons.calculate,
                   color: Colors.greenAccent,
                 ),
-                child: Text(
+                child: const Text(
                   "Insulin Dose Calculation",
                   overflow: TextOverflow.ellipsis,
                 ),
@@ -66,7 +66,7 @@ class homePage extends StatelessWidget {
                   Icons.alarm_add,
                   color: Colors.orangeAccent,
                 ),
-                child: Text(
+                child: const Text(
                   "Medication",
                   overflow: TextOverflow.ellipsis,
                 ),
@@ -75,10 +75,10 @@ class homePage extends StatelessWidget {
           ),
         ),
         body: TabBarView(children: [
-          bloodGlucoseMonitoring(),
-          healthIsightsPage(),
+          const bloodGlucoseMonitoring(),
+          const healthIsightsPage(),
           insulinDosePage(),
-          medicationReminderPage(),
+          const medicationReminderPage(),
         ]),
       ),
     );

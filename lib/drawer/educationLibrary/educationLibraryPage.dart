@@ -1,7 +1,6 @@
 import 'dart:convert';
 
-import 'package:diabetes_care_taker/COMPONENTS_PAGES/model/diabetes_listtile_items.dart';
-import 'package:diabetes_care_taker/PAGES/popupMenuPage.dart';
+import 'package:diabetes_care_taker/drawer/educationLibrary/diabetes_listtile_items.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 

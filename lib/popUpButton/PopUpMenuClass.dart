@@ -5,7 +5,7 @@ import 'package:url_launcher/url_launcher.dart';
 class PopUpMenuClass {
   Widget AboutAppWidget = RichText(
     text: TextSpan(
-      style: TextStyle(
+      style: const TextStyle(
         color: Colors.black,
         fontSize: 18,
         fontWeight: FontWeight.w500,
@@ -20,10 +20,10 @@ class PopUpMenuClass {
             fontWeight: FontWeight.w900,
           ),
         ),
-        TextSpan(
+        const TextSpan(
           text: "Welcome to the ",
         ),
-        TextSpan(
+        const TextSpan(
           text: "Diabetes Caretaker App",
           style: TextStyle(
             color: Color.fromARGB(151, 3, 89, 160),
@@ -31,7 +31,7 @@ class PopUpMenuClass {
             fontWeight: FontWeight.w900,
           ),
         ),
-        TextSpan(
+        const TextSpan(
           text:
               ", your comprehensive companion for managing diabetes effectively. This app is tailored to support individuals with diabetes by providing essential tools and resources for everyday diabetes management.",
         ),
@@ -44,7 +44,7 @@ class PopUpMenuClass {
             fontWeight: FontWeight.w900,
           ),
         ),
-        TextSpan(
+        const TextSpan(
           text:
               "\nThe primary purpose of this application is to provide a centralized platform for individuals with diabetes to monitor their blood glucose levels, track their medication intake, manage insulin doses, and receive personalized insights and recommendations for better disease management. Additionally, the application aims to facilitate healthcare providers to analyze the insights and trends and patterns of data that patient gives in the application, enabling timely adjustments to treatment plans based on real-time data.",
         ),
@@ -57,7 +57,7 @@ class PopUpMenuClass {
             fontWeight: FontWeight.w900,
           ),
         ),
-        TextSpan(
+        const TextSpan(
           text:
               "Blood Glucose Monitoring\nMedication Reminders\nHealth Insights and Trends\nInsulin Dose Calculation\nExercise Tracking\nDiabetes Education Library\nDiabetes-Related Tests Reminder System\nEmergency Alerts",
         ),
@@ -66,7 +66,7 @@ class PopUpMenuClass {
   );
   Widget ContactUsWidget = RichText(
     text: TextSpan(
-      style: TextStyle(
+      style: const TextStyle(
         color: Colors.black,
         fontSize: 18,
         fontWeight: FontWeight.w500,
@@ -81,7 +81,7 @@ class PopUpMenuClass {
             fontWeight: FontWeight.w900,
           ),
         ),
-        TextSpan(
+        const TextSpan(
           text:
               "If you have any questions, feedback, or need support, please don't hesitate to contact us. We are here to help you on your journey to better health.",
         ),
@@ -94,11 +94,11 @@ class PopUpMenuClass {
             fontWeight: FontWeight.w900,
           ),
         ),
-        TextSpan(
+        const TextSpan(
           text:
               "\nYou can reach us via email. We aim to respond to all inquiries within 24 hours.\n\nFor general inquiries, support, or feedback, email us at:",
         ),
-        TextSpan(
+        const TextSpan(
           text: "\n\nSupport:",
         ),
         TextSpan(
@@ -115,7 +115,7 @@ class PopUpMenuClass {
             fontSize: 15,
           ),
         ),
-        TextSpan(
+        const TextSpan(
           text: "\n\nFeedback::",
         ),
         TextSpan(
@@ -138,7 +138,7 @@ class PopUpMenuClass {
 
   Widget HelpWidget = RichText(
     text: TextSpan(
-      style: TextStyle(
+      style: const TextStyle(
         color: Colors.black,
         fontSize: 18,
         fontWeight: FontWeight.w500,
@@ -153,7 +153,7 @@ class PopUpMenuClass {
             fontWeight: FontWeight.w900,
           ),
         ),
-        TextSpan(
+        const TextSpan(
           text:
               "Creating an Account\n1) Open the app and tap \"Sign Up\".\n2) Enter your email address and create a password.\n\nLogging In\n1) Open the app and tap \"Log In\". \n2)Enter your email and password.",
         ),
@@ -166,7 +166,7 @@ class PopUpMenuClass {
             fontWeight: FontWeight.w900,
           ),
         ),
-        TextSpan(
+        const TextSpan(
           text:
               "\nThe Dashboard gives you a quick overview of your blood glucose levels, and upcoming reminders.",
         ),
@@ -179,7 +179,7 @@ class PopUpMenuClass {
             fontWeight: FontWeight.w900,
           ),
         ),
-        TextSpan(
+        const TextSpan(
           text: "\nEnter your readings.",
         ),
         TextSpan(
@@ -191,7 +191,7 @@ class PopUpMenuClass {
             fontWeight: FontWeight.w900,
           ),
         ),
-        TextSpan(
+        const TextSpan(
           text:
               "\n1)Readings Display: The app displays the blood glucose readings entered by the user.\n2)Pictorial Representation: Provides graphical representations of blood glucose data.\n3)Trend Analysis: Analyzes patterns in blood glucose readings and displays them in graphs.",
         ),
@@ -204,7 +204,7 @@ class PopUpMenuClass {
             fontWeight: FontWeight.w900,
           ),
         ),
-        TextSpan(
+        const TextSpan(
           text:
               "\nSetting Reminders: The app includes a feature for setting medication reminders to ensure timely intake of insulin and other medications.",
         ),
@@ -217,7 +217,7 @@ class PopUpMenuClass {
             fontWeight: FontWeight.w900,
           ),
         ),
-        TextSpan(
+        const TextSpan(
           text:
               "\n1)Calculation Tools: Provides tools for calculating insulin doses based on carbohydrate intake and blood glucose levels.\n2)Formulas Used: Utilizes Insulin to Carbohydrate Ratio and Insulin Sensitivity Factors.\n3)Correction Dose: Helps calculate the insulin correction dose for high blood glucose levels.\n4)Note for Type 2: This feature is not applicable for Type 2 diabetes patients.",
         ),
@@ -230,7 +230,7 @@ class PopUpMenuClass {
             fontWeight: FontWeight.w900,
           ),
         ),
-        TextSpan(
+        const TextSpan(
           text:
               "\nEducational Resources: Features a comprehensive library of educational resources related to diabetes management.",
         ),
@@ -243,7 +243,7 @@ class PopUpMenuClass {
             fontWeight: FontWeight.w900,
           ),
         ),
-        TextSpan(
+        const TextSpan(
           text:
               "\n1)Check your internet connection.\n2)Ensure you are entering the correct email and password.",
         ),
@@ -255,24 +255,24 @@ class PopUpMenuClass {
     children: [
       Card(
         elevation: 5,
-        margin: EdgeInsets.all(20.0),
+        margin: const EdgeInsets.all(20.0),
         child: Padding(
-          padding: EdgeInsets.all(20.0),
+          padding: const EdgeInsets.all(20.0),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              CircleAvatar(
+              const CircleAvatar(
                 radius: 50,
                 backgroundImage: AssetImage("assets/images/Abdullah.jpg"),
               ),
-              SizedBox(height: 10),
-              Text(
+              const SizedBox(height: 10),
+              const Text(
                 'Abdullah Iftikhar',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               ListTile(
-                leading: Icon(
+                leading: const Icon(
                   Icons.email,
                   color: Colors.black,
                 ),
@@ -290,7 +290,7 @@ class PopUpMenuClass {
                 },
               ),
               ListTile(
-                leading: Icon(
+                leading: const Icon(
                   Icons.link,
                   color: Colors.black,
                 ),
@@ -314,26 +314,26 @@ class PopUpMenuClass {
       ),
       Card(
         elevation: 10,
-        margin: EdgeInsets.all(20.0),
+        margin: const EdgeInsets.all(20.0),
         child: Padding(
-          padding: EdgeInsets.all(20.0),
+          padding: const EdgeInsets.all(20.0),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              CircleAvatar(
+              const CircleAvatar(
                 radius: 50,
                 backgroundImage: AssetImage("assets/images/zeeshan.jpg"),
               ),
               // CircleAvatar(
               //     radius: 50, child: Image.asset("assets/images/zeeshan.jpg")),
-              SizedBox(height: 10),
-              Text(
+              const SizedBox(height: 10),
+              const Text(
                 'Zeeshan Haider',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               ListTile(
-                leading: Icon(
+                leading: const Icon(
                   Icons.email,
                   color: Colors.black,
                 ),
@@ -351,7 +351,7 @@ class PopUpMenuClass {
                 },
               ),
               ListTile(
-                leading: Icon(
+                leading: const Icon(
                   Icons.link,
                   color: Colors.black,
                 ),
@@ -377,7 +377,7 @@ class PopUpMenuClass {
   );
   Widget TermsAndPrivacyWidget = RichText(
     text: TextSpan(
-      style: TextStyle(
+      style: const TextStyle(
         color: Colors.black,
         fontSize: 18,
         fontWeight: FontWeight.w500,
@@ -392,7 +392,7 @@ class PopUpMenuClass {
             fontWeight: FontWeight.w900,
           ),
         ),
-        TextSpan(
+        const TextSpan(
           text:
               "It is important to understand that the App is not a substitute for professional medical advice, diagnosis, or treatment.",
         ),
@@ -405,7 +405,7 @@ class PopUpMenuClass {
             fontWeight: FontWeight.w900,
           ),
         ),
-        TextSpan(
+        const TextSpan(
           text:
               "\nUse of the App does not create a professional-patient relationship between you and the developers, staff, or any other party associated with the App. The information and features provided by the App are for informational and organizational purposes only.",
         ),
@@ -418,7 +418,7 @@ class PopUpMenuClass {
             fontWeight: FontWeight.w900,
           ),
         ),
-        TextSpan(
+        const TextSpan(
           text:
               "While we strive to provide accurate and up-to-date information, we cannot guarantee the accuracy, completeness, or reliability of any information provided by the App. Medical science is constantly evolving, and new research can affect the accuracy of health-related information. Therefore, the App's content should not be considered comprehensive or current.",
         ),
@@ -438,7 +438,7 @@ class PopUpMenuClass {
             fontWeight: FontWeight.w900,
           ),
         ),
-        TextSpan(
+        const TextSpan(
           text:
               "Primary Source of Care: Always consult your physician or other qualified health provider regarding any questions or concerns you have about your health or medical condition.\nEmergency Situations: In the event of a medical emergency, call your doctor or emergency services immediately.",
         ),
@@ -452,7 +452,7 @@ class PopUpMenuClass {
             fontWeight: FontWeight.w900,
           ),
         ),
-        TextSpan(
+        const TextSpan(
           text:
               "The App does not create or recommend treatment plans. Any treatment or medication adjustments should be made in consultation with your healthcare provider.",
         ),
@@ -466,7 +466,7 @@ class PopUpMenuClass {
             fontWeight: FontWeight.w900,
           ),
         ),
-        TextSpan(
+        const TextSpan(
           text:
               "Scope of Information: The health-related information provided by the App is limited to general knowledge and user-generated data. It is not a comprehensive source of medical advice or treatment.",
         ),

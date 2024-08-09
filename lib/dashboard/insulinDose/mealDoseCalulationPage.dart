@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:provider/provider.dart';
-import 'package:diabetes_care_taker/CONTROLLER_PAGE/insulinDosePageController.dart';
-import 'package:diabetes_care_taker/CONTROLLER_PAGE/mealDoseCalulationPageController.dart';
-import 'package:diabetes_care_taker/PAGES/customTextFormFieldPage.dart';
+import 'package:diabetes_care_taker/dashboard/insulinDose/insulinDosePageController.dart';
+import 'package:diabetes_care_taker/dashboard/insulinDose/mealDoseCalulationPageController.dart';
+import 'package:diabetes_care_taker/customWidgets/customTextFormFieldPage.dart';
 
 class mealDoseCalculationPage extends StatelessWidget {
-  
   @override
   Widget build(BuildContext context) {
     final mealdosecalculationpagecontroller =
@@ -19,7 +18,7 @@ class mealDoseCalculationPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Meal Dose Calculation"),
+        title: const Text("Meal Dose Calculation"),
       ),
       body: SingleChildScrollView(
         child: Form(
@@ -28,14 +27,14 @@ class mealDoseCalculationPage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
-              Text(
+              const Text(
                 'Meal & Correction Dose Calculation',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 25,
               ),
               customTextFormField(
@@ -46,7 +45,7 @@ class mealDoseCalculationPage extends StatelessWidget {
                     .currentbloodsugarcontroller,
                 labelTextt: "Enter Your Current Blood Sugar",
                 hintTextt: "Current blood sugar level",
-                prefixIconn: Icon(Icons.bloodtype),
+                prefixIconn: const Icon(Icons.bloodtype),
                 keyboardType: TextInputType.number,
               ),
               customTextFormField(
@@ -57,7 +56,7 @@ class mealDoseCalculationPage extends StatelessWidget {
                     .targetbloodsugarcontroller,
                 labelTextt: "Enter Your Target Blood Sugar",
                 hintTextt: "Target blood sugar",
-                prefixIconn: Icon(Icons.bloodtype),
+                prefixIconn: const Icon(Icons.bloodtype),
                 keyboardType: TextInputType.number,
               ),
               customTextFormField(
@@ -68,10 +67,10 @@ class mealDoseCalculationPage extends StatelessWidget {
                     mealdosecalculationpagecontroller.noofcarbscontroller,
                 labelTextt: "Enter No. of Carbs of Your Meal",
                 hintTextt: " No. of carbs of your meal",
-                prefixIconn: Icon(Icons.food_bank),
+                prefixIconn: const Icon(Icons.food_bank),
                 keyboardType: TextInputType.number,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               SizedBox(
@@ -90,10 +89,10 @@ class mealDoseCalculationPage extends StatelessWidget {
                         borderRadius: BorderRadius.circular(30.0),
                       ),
                     ),
-                    child:
-                        Text('Calculate Dose', style: TextStyle(fontSize: 17))),
+                    child: const Text('Calculate Dose',
+                        style: TextStyle(fontSize: 17))),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               Card(
@@ -112,30 +111,30 @@ class mealDoseCalculationPage extends StatelessWidget {
                           builder: (context, value, child) {
                             return Text(
                               "Meal Dose: ${value.mealdose.toStringAsFixed(1)} units",
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontSize: 20, fontWeight: FontWeight.bold),
                             );
                           },
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 8,
                         ),
                         Consumer<mealDoseCalculationPageController>(
                             builder: (context, value, child) {
                           return Text(
                             "Correction Dose: ${value.correctiondose.toStringAsFixed(1)} units",
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontSize: 20, fontWeight: FontWeight.bold),
                           );
                         }),
-                        SizedBox(
+                        const SizedBox(
                           height: 8,
                         ),
                         Consumer<mealDoseCalculationPageController>(
                             builder: (context, value, child) {
                           return Text(
                             "Total Dose: ${value.mealcorrectiondose.toStringAsFixed(1)} units",
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontSize: 20, fontWeight: FontWeight.bold),
                           );
                         }),

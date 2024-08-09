@@ -1,4 +1,4 @@
-import 'package:diabetes_care_taker/PAGES/customToastPage.dart';
+import 'package:diabetes_care_taker/customWidgets/customToastPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 

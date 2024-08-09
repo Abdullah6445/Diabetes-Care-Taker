@@ -15,7 +15,7 @@ class _monthlyGraphState extends State<monthlyGraph> {
   bool _isLoading = true;
   String _errorMessage = '';
   bool _noData = false;
-  DateTime _startDate = DateTime.now().subtract(Duration(days: 29));
+  DateTime _startDate = DateTime.now().subtract(const Duration(days: 29));
   DateTime _endDate = DateTime.now();
   final _auth = FirebaseAuth.instance;
 
@@ -115,7 +115,7 @@ class _monthlyGraphState extends State<monthlyGraph> {
     double adjustedHeight = screenHeight - (screenHeight * reductionFraction);
     return Scaffold(
       appBar: AppBar(
-        title: Text('Monthly Blood Glucose Graph'),
+        title: const Text('Monthly Blood Glucose Graph'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
@@ -126,23 +126,23 @@ class _monthlyGraphState extends State<monthlyGraph> {
               children: [
                 Text(
                   'Selected Date: ${DateFormat('yyyy-MM-dd').format(_selectedDate)}',
-                  style: TextStyle(fontSize: 16),
+                  style: const TextStyle(fontSize: 16),
                 ),
                 ElevatedButton(
                   onPressed: () => _selectDate(context),
-                  child: Text('Select Date'),
+                  child: const Text('Select Date'),
                 ),
               ],
             ),
-            SizedBox(height: 120),
+            const SizedBox(height: 120),
             SizedBox(
               height: 400,
               child: _isLoading
-                  ? Center(child: CircularProgressIndicator())
+                  ? const Center(child: CircularProgressIndicator())
                   : _errorMessage.isNotEmpty
                       ? Center(child: Text(_errorMessage))
                       : _noData
-                          ? Center(
+                          ? const Center(
                               child: Text(
                                   'No blood glucose readings were entered to show'))
                           : Center(
@@ -160,7 +160,7 @@ class _monthlyGraphState extends State<monthlyGraph> {
                                     ),
                                     borderData: FlBorderData(
                                       show: true,
-                                      border: Border(
+                                      border: const Border(
                                         bottom: BorderSide(color: Colors.black),
                                         left: BorderSide(color: Colors.black),
                                         right: BorderSide(

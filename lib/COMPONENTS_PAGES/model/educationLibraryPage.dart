@@ -79,10 +79,7 @@ class _educationLibraryPageState extends State<educationLibraryPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Diabetes Practice Page"),
-        actions: const [
-          popupMenuPage(),
-        ],
+        title: const Text("Diabetes Education Library"),
       ),
       body: isLoading
           ? Center(

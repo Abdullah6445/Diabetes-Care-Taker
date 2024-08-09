@@ -1,20 +1,19 @@
 import 'package:diabetes_care_taker/PAGES/popupMenuPage.dart';
 import 'package:flutter/material.dart';
 
-class testReminderPage extends StatefulWidget {
-  const testReminderPage({super.key});
+class testTablePage extends StatefulWidget {
+  const testTablePage({super.key});
 
   @override
-  State<testReminderPage> createState() => _testReminderPageState();
+  State<testTablePage> createState() => _testTablePageState();
 }
 
-class _testReminderPageState extends State<testReminderPage> {
+class _testTablePageState extends State<testTablePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("Tests Table"),
-        actions: [popupMenuPage()],
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 5),

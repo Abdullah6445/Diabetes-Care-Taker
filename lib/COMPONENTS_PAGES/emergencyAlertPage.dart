@@ -284,10 +284,6 @@ class _emergencyAlertPageState extends State<emergencyAlertPage> {
             ),
             onPressed: showDeleteContactDialog,
           ),
-          popupMenuPage(),
-
-          // Replace `popupMenuPage()` with your actual implementation
-          // popupMenuPage(),
         ],
         elevation: 10,
         title: Text("Emergency Alert"),

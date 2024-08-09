@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:diabetes_care_taker/COMPONENTS_PAGES/model/educationLibraryPage.dart';
 import 'package:diabetes_care_taker/COMPONENTS_PAGES/emergencyAlertPage.dart';
 import 'package:diabetes_care_taker/COMPONENTS_PAGES/exerciseTrackingPage.dart';
-import 'package:diabetes_care_taker/COMPONENTS_PAGES/testReminderPage.dart';
+import 'package:diabetes_care_taker/COMPONENTS_PAGES/testTablePage.dart';
 import 'package:diabetes_care_taker/PAGES/customToastPage.dart';
 import 'package:diabetes_care_taker/connection/ConnectionClass.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -130,7 +130,7 @@ class _drawerPageState extends State<drawerPage> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => testReminderPage(),
+                    builder: (context) => testTablePage(),
                   ));
             },
             leading: Icon(

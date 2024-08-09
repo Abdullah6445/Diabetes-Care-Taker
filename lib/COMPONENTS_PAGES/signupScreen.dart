@@ -41,7 +41,7 @@ class _signupScreenState extends State<signupScreen> {
               ),
               customTextFormField(
                 validatorrr: (value) {
-                  if (value!.isEmpty) {
+                  if (value!.trimLeft().isEmpty) {
                     return 'Please enter your name';
                   }
                   return null;
@@ -54,7 +54,7 @@ class _signupScreenState extends State<signupScreen> {
               ),
               customTextFormField(
                 validatorrr: (value) {
-                  if (value!.isEmpty) {
+                  if (value!.trimLeft().isEmpty) {
                     return 'Please enter your email';
                   }
                   return null;
@@ -67,9 +67,9 @@ class _signupScreenState extends State<signupScreen> {
               ),
               customTextFormField(
                 validatorrr: (value) {
-                  if (value!.isEmpty) {
+                  if (value!.trimLeft().isEmpty) {
                     return 'Please enter your password';
-                  } else if (value.length < 7) {
+                  } else if (value.length < 6) {
                     return 'Password must be at least 6 characters';
                   }
                   return null;
@@ -93,7 +93,7 @@ class _signupScreenState extends State<signupScreen> {
               ),
               customTextFormField(
                 validatorrr: (value) {
-                  if (value!.isEmpty) {
+                  if (value!.trimLeft().isEmpty) {
                     return 'Please enter your password again';
                   } else if (value != passwordController.text) {
                     return 'Password does not match';

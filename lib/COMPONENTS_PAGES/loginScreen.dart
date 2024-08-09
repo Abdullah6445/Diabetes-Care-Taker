@@ -3,7 +3,6 @@ import 'package:diabetes_care_taker/PAGES/customToastPage.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:diabetes_care_taker/PAGES/customTextFormFieldPage.dart';
-import 'package:form_field_validator/form_field_validator.dart';
 
 class loginScreen extends StatefulWidget {
   @override
@@ -26,39 +25,45 @@ class _loginScreenState extends State<loginScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(height: 100),
+              const SizedBox(height: 100),
               Image.asset(
                 'assets/images/Login_Icon_2.png',
                 scale: 4,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 35,
               ),
-              Text(
+              const Text(
                 'Wellcome Back to Diabetes Caretaker',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 35,
               ),
               customTextFormField(
-                validatorrr: MultiValidator([
-                  RequiredValidator(errorText: "Please Enter Your Email"),
-                ]),
+                validatorrr: (p0) {
+                  if (p0!.trimLeft().isEmpty) {
+                    return "Please Enter Your Email";
+                  }
+                  return null;
+                },
                 controllerr: emailController,
                 labelTextt: "Enter Your Email",
                 hintTextt: "Enter Your Email",
-                prefixIconn: Icon(Icons.email),
+                prefixIconn: const Icon(Icons.email),
                 keyboardType: TextInputType.emailAddress,
               ),
               customTextFormField(
-                validatorrr: MultiValidator([
-                  RequiredValidator(errorText: "Please Enter Your Password"),
-                ]),
+                validatorrr: (p0) {
+                  if (p0!.trimLeft().isEmpty) {
+                    return "Please Enter Your Password";
+                  }
+                  return null;
+                },
                 controllerr: passwordController,
                 labelTextt: "Enter Your Password",
                 hintTextt: "Enter Your Password",
-                prefixIconn: Icon(Icons.password),
+                prefixIconn: const Icon(Icons.password),
                 keyboardType: TextInputType.visiblePassword,
                 obscurityy: _isPasswordHidden,
                 suffixIconn: IconButton(
@@ -72,7 +77,7 @@ class _loginScreenState extends State<loginScreen> {
                   },
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               SizedBox(
@@ -107,7 +112,7 @@ class _loginScreenState extends State<loginScreen> {
                       borderRadius: BorderRadius.circular(30.0),
                     ),
                   ),
-                  child: Row(
+                  child: const Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
@@ -119,17 +124,17 @@ class _loginScreenState extends State<loginScreen> {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               TextButton(
                 onPressed: () {
                   Navigator.pushReplacementNamed(context, '/signup');
                 },
-                child: Text('Don\'t have an account? Signup'),
+                child: const Text('Don\'t have an account? Signup'),
               ),
-              SizedBox(
-                height: 150,
+              const SizedBox(
+                height: 20,
               ),
               TextButton(
                 onPressed: () {
@@ -140,7 +145,10 @@ class _loginScreenState extends State<loginScreen> {
                     ),
                   );
                 },
-                child: Text('Forgot Password?'),
+                child: const Text(
+                  'Forgot Password?',
+                  style: TextStyle(color: Colors.red),
+                ),
               ),
             ],
           ),
